@@ -1,31 +1,20 @@
 import Logo from "./components/Logo";
 import Navigation from "./components/Navigation";
-import Hero from "./components/Hero";
-import ProductFilterCards from "./components/ProductFilterCards";
-import HomeProductsDisplay from "./components/HomeProductsDisplay";
-import SocialProof from "./components/SocialProof";
-import About from "./components/About";
-import Footer from "./components/Footer";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import Products from "./components/Products";
 
 export default function App() {
   return (
-    <div className="bg-mainBg">
-      <div className="min-h-screen ">
+    <Router>
+      <div className="bg-mainBg">
         <Logo />
         <Navigation />
-        <Hero />
       </div>
-      <section className="bg-white px-4 mt-10 py-20">
-        <ProductFilterCards />
-        <HomeProductsDisplay />
-      </section>
-      <section>
-        <SocialProof />
-      </section>
-      <section>
-        <About />
-      </section>
-      <Footer />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+      </Routes>
+    </Router>
   );
 }

@@ -1,9 +1,12 @@
 import React from "react";
 import Contact from "./Contact";
+import { useLocation } from "react-router-dom";
 
 const Navigation = () => {
+  const location = useLocation();
   const [contactOpen, setContactOpen] = React.useState(false);
-
+  console.log(location.pathname);
+  const isProducts = location.pathname === "/products";
   const openContact = () => {
     setContactOpen(true);
   };
@@ -16,8 +19,8 @@ const Navigation = () => {
         <a className="" href="#torte">
           Torte
         </a>
-        <a href="#kolaci">Kolači</a>
-        <a href="#about">Šta nudimo</a>
+        <a href="/products">Kolači</a>
+        {!isProducts && <a href="#about">Šta nudimo</a>}
         <button onClick={openContact}>Kontakt</button>
       </div>
       {contactOpen && <Contact closeContact={closeContact} />}
