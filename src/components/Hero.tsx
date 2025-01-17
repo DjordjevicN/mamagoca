@@ -8,7 +8,7 @@ const Hero = () => {
         <img
           src={waffle}
           alt="hero"
-          className="max-w-[500px] absolute left-1/2 top-24"
+          className="max-w-[500px] absolute left-1/2 top-24 rotationAnimation"
         />
       </div>
 
