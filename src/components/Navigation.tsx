@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 const Navigation = () => {
   const location = useLocation();
   const [contactOpen, setContactOpen] = React.useState(false);
-  console.log(location.pathname);
+
   const isProducts = location.pathname === "/products";
   const openContact = () => {
     setContactOpen(true);
