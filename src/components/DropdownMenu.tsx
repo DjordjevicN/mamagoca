@@ -2,6 +2,8 @@ import React from "react";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
 import ContactInformation from "./ContactInformation";
+// test
+
 const DropdownMenu = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const handleMenu = () => {
