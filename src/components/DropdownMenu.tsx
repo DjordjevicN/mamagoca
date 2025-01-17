@@ -24,13 +24,13 @@ const DropdownMenu = () => {
             onClick={handleClose}
           />
           <div className="flex flex-col text-left gap-4">
-            <a className="border-b-2" href="#torte">
+            <a className="border-b-2" href="/">
               Torte
             </a>
-            <a className="border-b-2" href="#kolaci">
+            <a className="border-b-2" href="/">
               Kolači
             </a>
-            <a className="border-b-2" href="#about">
+            <a className="border-b-2" href="/">
               Šta nudimo
             </a>
             <ContactInformation noMenu />
