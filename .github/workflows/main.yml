@@ -1,19 +1,38 @@
+name: Deploy to cPanel
+
 on:
   push:
     branches:
       - main
-name: 🚀 Deploy website on push
-jobs:
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          server: mamagoca.nikola-djordjevic.com/
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
+          node-version: 18
+
+      # Step 3: Install dependencies and build
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      # Step 4: Deploy via FTP
+      - name: Deploy to cPanel
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ftp.nikola-djordjevic.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          local-dir: build
+          server-dir: public_html
