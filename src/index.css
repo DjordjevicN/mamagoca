@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poiret+One&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", serif;
+}
+.mainFont {
+  font-family: "Poiret One", cursive;
+}
+.secondaryFont {
+  font-family: "Open Sans", serif;
+}
