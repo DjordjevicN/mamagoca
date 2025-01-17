@@ -4,9 +4,13 @@ import instagram from "../assets/instagram.svg";
 import facebook from "../assets/facebook.svg";
 import x from "../assets/x.svg";
 
-const ContactInformation = ({ noMenu }) => {
+interface ContactInformationProps {
+  noMenu?: boolean;
+}
+
+const ContactInformation: React.FC<ContactInformationProps> = ({ noMenu }) => {
   return (
-    <div className="mx-auto text-center ">
+    <div className="mx-auto text-center">
       <Logo noMenu />
       <div className="flex justify-center gap-5 my-5">
         <a target="_blank" href="https://www.instagram.com/mama_goca/">

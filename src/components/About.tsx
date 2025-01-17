@@ -22,7 +22,7 @@ const FAQContent = [
 
 const About = () => {
   return (
-    <div className=" bg-white py-40 ">
+    <div id="about" className="bg-white py-40 ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10  ">
         <div>
           <img src={whatWeDo} alt="cake" />

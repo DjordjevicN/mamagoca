@@ -9,16 +9,16 @@ const FAQCard = ({ content }) => {
       <button onClick={toggleOpen}>
         <div className="flex items-center">
           <img src={plus} alt="icon" />
-          <p className="text-gray-600">{content.title}</p>
+          <p className="text-gray-600 text-xs sm:text-base">{content.title}</p>
         </div>
       </button>
       {isOpen && (
-        <p className="ml-[24px] text-start text-secondaryText">
+        <p className="ml-[24px] text-start text-secondaryText text-xs sm:text-base">
           {content.description}
         </p>
       )}
 
-      <div className="h-[1px] bg-slate-300 w-full mt-5"></div>
+      <div className="h-[1px] bg-slate-300 w-full mt-5 text-xs sm:text-base"></div>
     </div>
   );
 };

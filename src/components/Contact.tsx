@@ -4,7 +4,7 @@ import close from "../assets/close.svg";
 
 const Contact = ({ closeContact }) => {
   return (
-    <div className="fixed top-1 right-1 p-16 shadow-md rounded-md bg-white">
+    <div className="fixed z-50 top-1 right-1 p-16 shadow-md rounded-md bg-white">
       <button
         onClick={() => closeContact()}
         className="absolute top-10 right-10"

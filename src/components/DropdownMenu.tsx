@@ -11,12 +11,12 @@ const DropdownMenu = () => {
     setMenuOpen(false);
   };
   return (
-    <div className="relative md:hidden ">
+    <div className="md:hidden ">
       <button onClick={handleMenu} className="mr-5">
         <img src={menu} alt="menu" />
       </button>
       {menuOpen && (
-        <div className="absolute z-50 top-8 right-5 bg-white shadow-sm rounded-[2px] w-[390px] p-6">
+        <div className="absolute z-50 top-0 right-0 bg-white shadow-sm rounded-[2px] min-w-[320px] p-6">
           <img
             src={close}
             alt="close"

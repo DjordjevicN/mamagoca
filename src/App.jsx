@@ -10,9 +10,11 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <div className="bg-mainBg">
-      <Logo />
-      <Navigation />
-      <Hero />
+      <div className="min-h-screen ">
+        <Logo />
+        <Navigation />
+        <Hero />
+      </div>
       <section className="bg-white px-4 mt-10 py-20">
         <ProductFilterCards />
         <HomeProductsDisplay />

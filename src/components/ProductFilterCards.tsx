@@ -1,7 +1,6 @@
 import React from "react";
 
 const ProductFilterCards = () => {
-  const arr = ["Torte", "Kolaci", "Sitni kolaci"];
   const tabs = [
     {
       image:
@@ -24,28 +23,26 @@ const ProductFilterCards = () => {
   ];
   const Card = ({ cardContent }) => {
     return (
-      <button
-        className="w-full"
+      <div
+        className="flex items-end justify-center pb-10 w-full sm:max-w-[320px]  h-[200px]"
         style={{
           backgroundImage: `url(${cardContent.image})`,
           backgroundSize: "cover",
         }}
       >
-        <div className="h-[250px] flex items-end justify-center pb-10">
-          <div className="flex justify-center items-center w-full  mx-[20px] bg-white">
-            <h1 className="mainFont text-secondaryText text-2xl p-3">
-              {cardContent.title}
-            </h1>
-          </div>
+        <div className="flex justify-center items-center w-full mx-[20px] bg-white">
+          <h1 className="mainFont text-secondaryText text-2xl p-3">
+            {cardContent.title}
+          </h1>
         </div>
-      </button>
+      </div>
     );
   };
   return (
-    <div className="flex justify-between items-center max-w-7xl mx-auto bg-slate-200 gap-4">
-      {tabs.map((cardContent) => {
-        return <Card cardContent={cardContent} />;
-      })}
+    <div className="flex flex-col lg:flex-row justify-between items-center gap-4 w-full max-w-[1280px] mx-auto">
+      {tabs.map((cardContent) => (
+        <Card cardContent={cardContent} />
+      ))}
     </div>
   );
 };

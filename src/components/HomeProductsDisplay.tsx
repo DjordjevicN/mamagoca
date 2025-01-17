@@ -16,7 +16,7 @@ const homeProducts = [
 ];
 const HomeProducts = () => {
   return (
-    <div className="grid grid-cols-3 gap-4 mt-20">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-20">
       {homeProducts.map((product) => {
         return (
           <div className="text-center mx-auto">
