@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 18
 
-      # Step 3: Install dependencies and build
+      # Step 3: Install dependencies and buildz
       - name: Install and Build
         run: |
           npm install
