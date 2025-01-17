@@ -7,14 +7,14 @@ import Products from "./components/Products";
 export default function App() {
   return (
     <div className="bg-mainBg">
-      {/* <Logo />
-      <Navigation /> */}
-      <BrowserRouter>
+      <Logo />
+      <Navigation />
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }
