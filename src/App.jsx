@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <div className="bg-mainBg">
-      33333
       <Logo />
       <Navigation />
       <Hero />
