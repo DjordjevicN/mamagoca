@@ -1,6 +1,6 @@
 import Logo from "./components/Logo";
 import Navigation from "./components/Navigation";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Products from "./components/Products";
 
@@ -9,12 +9,12 @@ export default function App() {
     <div className="bg-mainBg">
       <Logo />
       <Navigation />
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-        </Routes>
-      </BrowserRouter> */}
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/products" component={Products} />
+        </Switch>
+      </Router>
     </div>
   );
 }
