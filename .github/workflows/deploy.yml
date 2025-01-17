@@ -26,7 +26,7 @@ jobs:
           npm install
           npm run build
 
-      # Step 4: Deploy via FTPs
+      # Step 4: Deploy via FTP
       - name: Deploy to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
         with:
