@@ -2,35 +2,24 @@ import React from "react";
 import ornament from "../assets/ornament.svg";
 import cake1 from "../assets/cake.png";
 import cake2 from "../assets/cake2.jpeg";
+import ProductItem from "./ProductItem";
 
 const homeProducts = [
-  { title: "Macaroon", image: cake1, price: 100, description: "opis" },
-  { title: "Macaroon", image: cake2, price: 100, description: "opis" },
-  { title: "Macaroon", image: cake1, price: 100, description: "opis" },
-  { title: "Macaroon", image: cake2, price: 100, description: "opis" },
-  { title: "Macaroon", image: cake1, price: 100, description: "opis" },
-  { title: "Macaroon", image: cake2, price: 100, description: "opis" },
-  { title: "Macaroon", image: cake2, price: 100, description: "opis" },
-  { title: "Macaroon", image: cake2, price: 100, description: "opis" },
-  { title: "Macaroon", image: cake2, price: 100, description: "opis" },
+  { name: "Macaroon", image: cake1, price: 100, description: "" },
+  { name: "Macaroon", image: cake2, price: 100, description: "" },
+  { name: "Macaroon", image: cake1, price: 100, description: "" },
+  { name: "Macaroon", image: cake2, price: 100, description: "" },
+  { name: "Macaroon", image: cake1, price: 100, description: "" },
+  { name: "Macaroon", image: cake2, price: 100, description: "" },
+  { name: "Macaroon", image: cake2, price: 100, description: "" },
+  { name: "Macaroon", image: cake2, price: 100, description: "" },
+  { name: "Macaroon", image: cake2, price: 100, description: "" },
 ];
 const HomeProducts = () => {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-20">
       {homeProducts.map((product) => {
-        return (
-          <div className="text-center mx-auto">
-            <img
-              src={product.image}
-              alt="Product image"
-              className="w-[150px]"
-            />
-            <h1 className="mainFont text-secondaryTex text-2xl">
-              {product.title}
-            </h1>
-            <p className="font-thin">{product.price}</p>
-          </div>
-        );
+        return <ProductItem product={product} />;
       })}
     </div>
   );

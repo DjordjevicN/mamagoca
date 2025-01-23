@@ -24,7 +24,6 @@ const Home = () => {
       <section>
         <About />
       </section>
-      <Footer />
     </div>
   );
 };
