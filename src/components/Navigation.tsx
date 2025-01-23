@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Contact from "./Contact";
 
 import { PRODUCT_TYPES } from "./constants/constants";
@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { updateProductType } from "../productSlice";
 
 const Navigation = () => {
+  const modalRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const [contactOpen, setContactOpen] = useState(false);
 
@@ -20,8 +21,26 @@ const Navigation = () => {
     dispatch(updateProductType(newType));
   };
 
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      setContactOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (contactOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [contactOpen]);
+
   return (
-    <div className="md:block hidden">
+    <div className="md:block hidden" ref={modalRef}>
       <div className="text-mainText max-w-screen-md flex justify-between mx-auto p-4 mt-16">
         <a href="/">Home</a>
         <a

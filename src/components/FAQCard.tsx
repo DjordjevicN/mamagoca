@@ -13,7 +13,7 @@ const FAQCard = ({ content }) => {
         </div>
       </button>
       {isOpen && (
-        <p className="ml-[24px] text-start text-secondaryText text-xs sm:text-base">
+        <p className="ml-[24px] pr-3 text-start text-secondaryText text-xs sm:text-base">
           {content.description}
         </p>
       )}

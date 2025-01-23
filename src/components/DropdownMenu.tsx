@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
 import ContactInformation from "./ContactInformation";
 import { useDispatch } from "react-redux";
 import { updateProductType } from "../productSlice";
 import { PRODUCT_TYPES } from "./constants/constants";
+
 const DropdownMenu = () => {
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -20,6 +23,23 @@ const DropdownMenu = () => {
   };
   const isRouteHome = window.location.pathname === "/";
 
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
   return (
     <div className="md:hidden">
       {menuOpen && (
@@ -29,7 +49,10 @@ const DropdownMenu = () => {
         <img src={menu} alt="menu" />
       </button>
       {menuOpen && (
-        <div className="absolute z-50 top-0 right-0 bg-white shadow-sm rounded-[2px] p-6 w-full sm:w-auto">
+        <div
+          ref={modalRef}
+          className="absolute z-50 top-0 right-0 bg-white shadow-sm rounded-[2px] p-6 w-full sm:w-auto"
+        >
           <img
             src={close}
             alt="close"
