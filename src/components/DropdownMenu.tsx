@@ -2,13 +2,21 @@ import React from "react";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
 import ContactInformation from "./ContactInformation";
+import { useDispatch } from "react-redux";
+import { updateProductType } from "../productSlice";
+import { PRODUCT_TYPES } from "./constants/constants";
 const DropdownMenu = () => {
+  const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
   const handleClose = () => {
     setMenuOpen(false);
+  };
+
+  const handleUpdateType = (newType) => {
+    dispatch(updateProductType(newType));
   };
   return (
     <div className="md:hidden ">
@@ -24,13 +32,27 @@ const DropdownMenu = () => {
             onClick={handleClose}
           />
           <div className="flex flex-col text-left gap-4">
-            <a className="border-b-2" href="/">
+            <a
+              className="border-b-2"
+              href="/products"
+              onClick={() => {
+                handleUpdateType(PRODUCT_TYPES.TORTE);
+                handleClose();
+              }}
+            >
               Torte
             </a>
-            <a className="border-b-2" href="/">
+            <a
+              className="border-b-2"
+              href="/products"
+              onClick={() => {
+                handleUpdateType(PRODUCT_TYPES.KOLACI);
+                handleClose();
+              }}
+            >
               Kolači
             </a>
-            <a className="border-b-2" href="/">
+            <a className="border-b-2" href="#about" onClick={handleClose}>
               Šta nudimo
             </a>
             <ContactInformation noMenu />
