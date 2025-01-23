@@ -16,7 +16,7 @@ const DropdownMenu = () => {
         <img src={menu} alt="menu" />
       </button>
       {menuOpen && (
-        <div className="absolute z-50 top-0 right-0 bg-white shadow-sm rounded-[2px] min-w-[320px] p-6">
+        <div className="absolute z-50 top-0 right-0 bg-white shadow-sm rounded-[2px]  p-6  w-full sm:w-auto">
           <img
             src={close}
             alt="close"
