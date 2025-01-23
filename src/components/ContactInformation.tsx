@@ -25,7 +25,9 @@ const ContactInformation: React.FC<ContactInformationProps> = ({ noMenu }) => {
       </div>
       <div className="text-center text-mainText">
         <p>Džona Kenedija 31g, Belgrade, Serbia 11000</p>
-        <p>065 319 27 27</p>
+        <p>
+          <a href="tel:+381653192727">065 319 27 27</a>
+        </p>
         <a href="#" className="text-accent">
           mamagoca.com
         </a>
