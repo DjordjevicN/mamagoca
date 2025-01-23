@@ -18,13 +18,18 @@ const DropdownMenu = () => {
   const handleUpdateType = (newType) => {
     dispatch(updateProductType(newType));
   };
+  const isRouteHome = window.location.pathname === "/";
+
   return (
-    <div className="md:hidden ">
+    <div className="md:hidden">
+      {menuOpen && (
+        <div className="h-screen z-40 w-full bg-black fixed top-0 left-0 opacity-40"></div>
+      )}
       <button onClick={handleMenu} className="mr-5">
         <img src={menu} alt="menu" />
       </button>
       {menuOpen && (
-        <div className="absolute z-50 top-0 right-0 bg-white shadow-sm rounded-[2px]  p-6  w-full sm:w-auto">
+        <div className="absolute z-50 top-0 right-0 bg-white shadow-sm rounded-[2px] p-6 w-full sm:w-auto">
           <img
             src={close}
             alt="close"
@@ -52,9 +57,12 @@ const DropdownMenu = () => {
             >
               Kolači
             </a>
-            <a className="border-b-2" href="#about" onClick={handleClose}>
-              Šta nudimo
-            </a>
+
+            {isRouteHome && (
+              <a className="border-b-2" href="#about" onClick={handleClose}>
+                Šta nudimo
+              </a>
+            )}
             <ContactInformation noMenu />
           </div>
         </div>
