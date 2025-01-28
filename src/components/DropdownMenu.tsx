@@ -4,7 +4,7 @@ import close from "../assets/close.svg";
 import ContactInformation from "./ContactInformation";
 import { useDispatch } from "react-redux";
 import { updateProductType } from "../productSlice";
-import { PRODUCT_TYPES } from "./constants/constants";
+import { PRODUCT_TYPES, URLs } from "./constants/constants";
 
 const DropdownMenu = () => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const DropdownMenu = () => {
           <div className="flex flex-col text-left gap-4">
             <a
               className="border-b-2"
-              href="/products"
+              href={URLs.torte}
               onClick={() => {
                 handleUpdateType(PRODUCT_TYPES.TORTE);
                 handleClose();
@@ -72,13 +72,23 @@ const DropdownMenu = () => {
             </a>
             <a
               className="border-b-2"
-              href="/products"
+              href={URLs.kolaci}
               onClick={() => {
                 handleUpdateType(PRODUCT_TYPES.KOLACI);
                 handleClose();
               }}
             >
               Kolači
+            </a>
+            <a
+              className="border-b-2"
+              href={URLs.sitniKolaci}
+              onClick={() => {
+                handleUpdateType(PRODUCT_TYPES.KOLACI);
+                handleClose();
+              }}
+            >
+              Sitni Kolači
             </a>
 
             {isRouteHome && (

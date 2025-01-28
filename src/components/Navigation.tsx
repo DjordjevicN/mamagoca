@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Contact from "./Contact";
-
+import { URLs } from "./constants/constants";
 import { PRODUCT_TYPES } from "./constants/constants";
 import { useDispatch } from "react-redux";
 import { updateProductType } from "../productSlice";
@@ -42,18 +42,24 @@ const Navigation = () => {
   return (
     <div className="md:block hidden" ref={modalRef}>
       <div className="text-mainText max-w-screen-md flex justify-between mx-auto p-4 mt-16">
-        <a href="/">Home</a>
+        <a href={URLs.home}>Home</a>
         <a
           onClick={() => handleUpdateType(PRODUCT_TYPES.TORTE)}
-          href="/products"
+          href={URLs.torte}
         >
           Torte
         </a>
         <a
           onClick={() => handleUpdateType(PRODUCT_TYPES.KOLACI)}
-          href="/products"
+          href={URLs.kolaci}
         >
           Kolači
+        </a>
+        <a
+          onClick={() => handleUpdateType(PRODUCT_TYPES.KOLACI)}
+          href={URLs.sitniKolaci}
+        >
+          Sitni Kolači
         </a>
         <button onClick={openContact}>Kontakt</button>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 import ProductItems from "./ProductItems";
 import { useSelector } from "react-redux";
 
-const Products = () => {
+const KolaciPage = () => {
   const data = useSelector((state) => state.product);
   return (
     <div className="bg-white">
@@ -14,4 +14,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default KolaciPage;
