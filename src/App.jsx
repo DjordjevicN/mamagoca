@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <Provider store={store}>
-      <p>test</p>
       <div className="bg-mainBg">
         <Logo />
         <Navigation />
