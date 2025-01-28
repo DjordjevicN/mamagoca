@@ -5,7 +5,7 @@ import facebook from "../assets/facebook.svg";
 import x from "../assets/x.svg";
 const Construction = () => {
   return (
-    <div className="bg-[#3F0767] pb-[300px] flex justify-center items-center">
+    <div className="bg-[#3F0767] min-h-screen  flex justify-center items-center">
       <div className="flex-col-reverse flex lg:flex-row justify-between items-center max-w-[1800px] mx-auto px-6">
         <div>
           <h1 className="text-white text-5xl font-bold mb-6">
