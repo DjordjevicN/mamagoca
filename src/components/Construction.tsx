@@ -8,7 +8,7 @@ const Construction = () => {
     <div className="bg-[#3F0767] min-h-screen  flex justify-center items-center">
       <div className="flex-col-reverse flex lg:flex-row justify-between items-center max-w-[1800px] mx-auto px-6">
         <div>
-          <h1 className="text-white text-5xl font-bold mb-6">
+          <h1 className="text-white text-2xl md:text-5xl font-bold mb-6">
             Sajt je u izradi!
           </h1>
           <p className="text-white mt-3 max-w-[550px]">
@@ -40,7 +40,11 @@ const Construction = () => {
           </button>
         </div>
         <div>
-          <img src={constructiuonImage} alt="" className="max-w-[600px]" />
+          <img
+            src={constructiuonImage}
+            alt=""
+            className="max-w-[600px]  w-[300px] sm:w-full"
+          />
         </div>
       </div>
     </div>
