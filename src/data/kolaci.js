@@ -76,4 +76,15 @@ export const KOLACI = [
     image: "https://imageproxy.wolt.com/assets/66fd261a3d87030c87015924?w=600",
     description: "Bela čokolada, lešnik, pistaći",
   },
+  {
+    id: "8",
+    name: "Žito sa šlagom",
+    price: 250,
+    currency: "RSD",
+    favorite: false,
+    popular: false,
+    category: "kolaci",
+    image: "https://imageproxy.wolt.com/assets/66fd261a3d87030c87015924?w=600",
+    description: "Porcija 120g",
+  },
 ];

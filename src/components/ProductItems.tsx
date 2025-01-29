@@ -4,7 +4,7 @@ import ProductItem from "./ProductItem";
 
 const ProductItems = () => {
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-20 gap-y-20 pb-60">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-20 gap-y-20 pb-60 max-w-[1200px] mx-auto px-8">
       {KOLACI.map((product) => {
         return (
           <div key={product.id}>

@@ -2,6 +2,7 @@ import React from "react";
 import constructiuonImage from "../assets/construction.jpg";
 import instagram from "../assets/instagram.svg";
 import facebook from "../assets/facebook.svg";
+import tiktok from "../assets/tiktok.svg";
 import x from "../assets/x.svg";
 const Construction = () => {
   return (
@@ -28,6 +29,9 @@ const Construction = () => {
             </a>
             <a target="_blank" href="/">
               <img src={x} alt="x" />
+            </a>
+            <a target="_blank" href="/">
+              <img src={tiktok} alt="tiktok" />
             </a>
           </div>
           <button className="border rounded-lg py-3 px-5  text-white">
