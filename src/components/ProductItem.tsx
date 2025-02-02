@@ -1,8 +1,19 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, index }) => {
   return (
-    <div className="text-center mx-auto">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 100 },
+      }}
+      className="text-center mx-auto"
+    >
       <img
         src={product.image}
         alt="Product image"
@@ -18,7 +29,7 @@ const ProductItem = ({ product }) => {
           product.currency || "RSD"
         }`}</p>
       )}
-    </div>
+    </motion.div>
   );
 };
 

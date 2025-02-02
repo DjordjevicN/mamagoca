@@ -1,5 +1,6 @@
 import React from "react";
 import waffle from "../assets/waffle.png";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -14,15 +15,24 @@ const Hero = () => {
 
       <div className="mx-auto max-w-[750px] relative z-30 flex justify-between items-center h-full">
         <div>
-          <div>
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <h1 className="mainFont text-5xl lg:text-7xl text-secondaryText">
               Da li si za
             </h1>
             <h1 className="mainFont text-5xl lg:text-7xl text-secondaryText">
               nešto slatko?
             </h1>
-          </div>
-          <div className="mt-10">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="mt-10"
+          >
             <a
               target="_blank"
               href="https://wolt.com/sr/srb/belgrade/restaurant/mama-goca-zemun?srsltid=AfmBOorVx-dlSe9uASbEVdKeUtTPeBKL-I5SRozPju-2efgGaw5Drq63"
@@ -30,7 +40,7 @@ const Hero = () => {
             >
               Poruči odmah
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

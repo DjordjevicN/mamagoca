@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, useAnimation } from "framer-motion";
 
 const ProductFilterCards = () => {
   const tabs = [
@@ -21,9 +22,17 @@ const ProductFilterCards = () => {
       url: "/sitni-kolaci",
     },
   ];
-  const Card = ({ cardContent }) => {
+  const Card = ({ cardContent, index }) => {
     return (
-      <div
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 100 },
+        }}
         className="flex items-end justify-center pb-10 w-full sm:max-w-[320px]  h-[200px]"
         style={{
           backgroundImage: `url(${cardContent.image})`,
@@ -35,13 +44,13 @@ const ProductFilterCards = () => {
             {cardContent.title}
           </h1>
         </div>
-      </div>
+      </motion.div>
     );
   };
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center gap-4 w-full max-w-[1280px] mx-auto">
-      {tabs.map((cardContent) => (
-        <Card cardContent={cardContent} />
+      {tabs.map((cardContent, i) => (
+        <Card cardContent={cardContent} index={i} />
       ))}
     </div>
   );

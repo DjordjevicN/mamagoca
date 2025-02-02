@@ -6,17 +6,17 @@ const FAQContent = [
   {
     title: "Slatki predah u našoj poslastičarnici.",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error inventore animi et tenetur sequi fugit libero explicabo rerum qui consequuntur ea labore magni voluptates, unde natus mollitia incidunt quisquam minus!",
+      "Uživajte u prijatnoj atmosferi naše poslastičarnice uz savršeno pripremljene kolače, sveže ceđene sokove i kvalitetnu kafu. Idealno mesto za opuštanje i slatke trenutke.",
   },
   {
     title: "Ručno rađene torte i kolače za tvoja slavlja.",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error inventore animi et tenetur sequi fugit libero explicabo rerum qui consequuntur ea labore magni voluptates, unde natus mollitia incidunt quisquam minus!",
+      "Pravimo sitne kolače za slave, proslave i druga posebna okupljanja. Takođe, izrađujemo prelepe torte za venčanja, rođendane i korporativne događaje, prilagođene vašim željama.",
   },
   {
     title: "Dostavu na kućnu adresu.",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error inventore animi et tenetur sequi fugit libero explicabo rerum qui consequuntur ea labore magni voluptates, unde natus mollitia incidunt quisquam minus!",
+      "Omiljene kolače možete poručiti i uživati u njima bez izlaska iz kuće. Dostava je dostupna putem Wolt aplikacije, brzo i jednostavno!",
   },
 ];
 

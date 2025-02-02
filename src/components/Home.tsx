@@ -6,7 +6,7 @@ import ProductFilterCards from "./ProductFilterCards";
 import HomeProductsDisplay from "./HomeProductsDisplay";
 import SocialProof from "./SocialProof";
 import About from "./About";
-import Footer from "./Footer";
+import MamagocaStory from "./MamagocaStory";
 
 const Home = () => {
   return (
@@ -24,6 +24,7 @@ const Home = () => {
       <section>
         <About />
       </section>
+      <MamagocaStory />
     </div>
   );
 };

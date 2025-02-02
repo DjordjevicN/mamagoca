@@ -3,6 +3,7 @@ import ornament from "../assets/ornament.svg";
 import cake1 from "../assets/cake.png";
 import cake2 from "../assets/cake2.jpeg";
 import ProductItem from "./ProductItem";
+import { motion } from "framer-motion";
 
 const homeProducts = [
   { name: "Macaroon", image: cake1, price: 100, description: "" },
@@ -18,8 +19,8 @@ const homeProducts = [
 const HomeProducts = () => {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-20">
-      {homeProducts.map((product) => {
-        return <ProductItem product={product} />;
+      {homeProducts.map((product, i) => {
+        return <ProductItem product={product} index={i} />;
       })}
     </div>
   );
@@ -28,7 +29,17 @@ const HomeProducts = () => {
 const HomeProductsDisplay = () => {
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="text-center mt-40">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 100 },
+        }}
+        className="text-center mt-40"
+      >
         <div className="flex justify-center items-center">
           <img src={ornament} alt="ornament" />
         </div>
@@ -42,7 +53,7 @@ const HomeProductsDisplay = () => {
             izdanju.
           </p>
         </div>
-      </div>
+      </motion.div>
       <div>
         <HomeProducts />
       </div>
