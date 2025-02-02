@@ -14,7 +14,7 @@ export default function App() {
   const featureLock = localStorage.getItem("featureLock");
   return (
     <Provider store={store}>
-      {featureLock ? (
+      {!featureLock ? (
         <div className="bg-mainBg">
           <Logo />
           <Navigation />
