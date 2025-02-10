@@ -2,7 +2,7 @@ import React from "react";
 // import { KOLACI } from "../data/kolaci";
 // import ProductItem from "./ProductItem";
 import { useQuery } from "react-query";
-import { fetchProducts } from "./ProductsFetch";
+import { fetchProducts } from "./productsFetch";
 
 const ProductItems = () => {
   const {
