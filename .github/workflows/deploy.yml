@@ -20,19 +20,19 @@ jobs:
         with:
           node-version: 18
 
-      # Step 3: Install dependencies and build
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
-
-      # Step 3.5: Set environment variables
+      # Step 3: Set environment variables
       - name: Set environment variables
         run: |
           echo "VITE_KEY=${{ secrets.VITE_KEY }}" >> .env
           echo "VITE_SECRET=${{ secrets.VITE_SECRET }}" >> .env
 
-      # Step 4: Deploy via FTP
+      # Step 4: Install dependencies and build
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      # Step 5: Deploy via FTP
       - name: Deploy to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
         with:
