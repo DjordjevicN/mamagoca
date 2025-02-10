@@ -50,7 +50,7 @@ const ProductFilterCards = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center gap-4 w-full max-w-[1280px] mx-auto">
       {tabs.map((cardContent, i) => (
-        <Card cardContent={cardContent} index={i} />
+        <Card key={cardContent.title} cardContent={cardContent} index={i} />
       ))}
     </div>
   );

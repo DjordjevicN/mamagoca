@@ -30,7 +30,7 @@ const About = () => {
         <div className="flex flex-col items-center">
           <h1 className="text-mainText mainFont text-3xl mb-8">Šta nudimo?</h1>
           {FAQContent.map((content) => (
-            <FAQCard content={content} />
+            <FAQCard key={content.title} content={content} />
           ))}
         </div>
       </div>
