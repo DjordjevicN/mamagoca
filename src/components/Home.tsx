@@ -7,12 +7,10 @@ import HomeProductsDisplay from "./HomeProductsDisplay";
 import SocialProof from "./SocialProof";
 import About from "./About";
 import MamagocaStory from "./MamagocaStory";
-import ProductsFetch from "./ProductsFetch";
 
 const Home = () => {
   return (
     <div className="bg-mainBg">
-      <ProductsFetch />
       <div className="min-h-screen ">
         <Hero />
       </div>
