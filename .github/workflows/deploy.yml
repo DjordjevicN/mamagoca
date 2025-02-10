@@ -26,6 +26,12 @@ jobs:
           npm install
           npm run build
 
+      # Step 3.5: Set environment variables
+      - name: Set environment variables
+        run: |
+          echo "VITE_KEY=${{ secrets.VITE_KEY }}" >> .env
+          echo "VITE_SECRET=${{ secrets.VITE_SECRET }}" >> .env
+
       # Step 4: Deploy via FTP
       - name: Deploy to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
