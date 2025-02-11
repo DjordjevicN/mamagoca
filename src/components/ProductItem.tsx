@@ -2,6 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const ProductItem = ({ product, index }) => {
+  const {
+    name,
+    image,
+    description,
+    currency = "RSD",
+    salePrice,
+    regularPrice,
+  } = product;
+  const currentPrice = salePrice || regularPrice;
+
   return (
     <motion.div
       initial="hidden"
@@ -14,22 +24,22 @@ const ProductItem = ({ product, index }) => {
       }}
       className="text-center mx-auto"
     >
-      <img
-        src={product.image}
-        alt="Product image"
-        className="w-[150px] mx-auto"
-      />
-      <h1 className="mainFont text-mainBlack text-2xl mt-4">{product.name}</h1>
+      <img src={image} alt="Product image" className="w-[150px] mx-auto" />
+      <h1 className="mainFont text-mainBlack text-2xl mt-4">{name}</h1>
 
-      {product.description && (
+      {description && (
         <div className="font-thin text-gray50">
-          {<div dangerouslySetInnerHTML={{ __html: product.description }} />}
+          <div dangerouslySetInnerHTML={{ __html: description }} />
         </div>
       )}
-      {product.price && (
-        <p className="font-thin mt-4">{`${product.price} ${
-          product.currency || "RSD"
-        }`}</p>
+
+      {currentPrice && (
+        <div className="mt-4">
+          <p className="font-thin">{`${currentPrice} ${currency}`}</p>
+          {salePrice && (
+            <p className="text-red-500 line-through">{`${regularPrice} ${currency}`}</p>
+          )}
+        </div>
       )}
     </motion.div>
   );

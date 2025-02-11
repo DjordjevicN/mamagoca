@@ -1,15 +1,7 @@
 import React from "react";
 import ProductItem from "./ProductItem";
-import { useQuery } from "react-query";
-import { fetchProducts } from "./productsFetch";
 
-const ProductItems = () => {
-  const {
-    data: products,
-    error,
-    isLoading,
-  } = useQuery("products", fetchProducts);
-
+const ProductItems = ({ products, isLoading, error }) => {
   if (isLoading || !products)
     return (
       <div className="mt-20 min-h-[50vh] text-center">
