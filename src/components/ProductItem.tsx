@@ -22,7 +22,9 @@ const ProductItem = ({ product, index }) => {
       <h1 className="mainFont text-mainBlack text-2xl mt-4">{product.name}</h1>
 
       {product.description && (
-        <p className="font-thin text-gray50">{product.description}</p>
+        <div className="font-thin text-gray50">
+          {<div dangerouslySetInnerHTML={{ __html: product.description }} />}
+        </div>
       )}
       {product.price && (
         <p className="font-thin mt-4">{`${product.price} ${
