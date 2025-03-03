@@ -24,7 +24,9 @@ const ProductItem = ({ product, index }) => {
       }}
       className="text-center mx-auto"
     >
-      <img src={image} alt="Product image" className="w-[150px] mx-auto" />
+      {image && (
+        <img src={image} alt="Product image" className="w-[150px] mx-auto" />
+      )}
       <h1 className="mainFont text-mainBlack text-2xl mt-4">{name}</h1>
 
       {description && (

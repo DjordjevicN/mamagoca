@@ -1,7 +1,7 @@
 import React from "react";
 import waffle from "../assets/waffle.png";
 import { motion } from "framer-motion";
-
+// Wolt trenutno jebe
 const Hero = () => {
   return (
     <section className="relative h-[75vh] px-5 overflow-hidden">

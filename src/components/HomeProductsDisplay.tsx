@@ -15,7 +15,7 @@ const HomeProducts = () => {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-20">
       {favoriteCakes?.map((product, i) => {
-        return <ProductItem product={product} index={i} />;
+        return <ProductItem key={product.id} product={product} index={i} />;
       })}
     </div>
   );
