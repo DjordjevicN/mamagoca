@@ -1,31 +1,30 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { div } from "framer-motion/client";
+import newGoca from "../assets/story/newGoca.jpg";
+import oldGoca from "../assets/story/oldGoca.jpg";
+import cover from "../assets/story/allcakesIphone.jpg";
+import meda from "../assets/story/meda.jpg";
 
 const MamagocaStory = () => {
   const content = [
     {
       id: 1,
-      image:
-        "https://plus.unsplash.com/premium_photo-1665669263531-cdcbe18e7fe4?q=80&w=2125&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: newGoca,
       text: "Na granici Novog Beograda i Zemuna nalazi se čarobni poslastičarski kutak koji sprema slatke zalogaje namenjene svim generacijama. Ime mu je Mama Goca.",
     },
     {
       id: 2,
-      image:
-        "https://plus.unsplash.com/premium_photo-1665669263531-cdcbe18e7fe4?q=80&w=2125&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: oldGoca,
       text: "Prvi kolači iz Mama Gocine radionice počeli su da se prodaju još 1993. godine, da bi 2012. osvanula prva poslastičarnica, koja je na leto 2024. godine preseljena na novu lokaciju koju rado posećuju kako komšije, tako i stare mušterije iz drugog kraja grada, ali i oni znatiželjni da otkriju ukuse koji se kriju ispod sjajne glazure.",
     },
     {
       id: 3,
-      image:
-        "https://plus.unsplash.com/premium_photo-1665669263531-cdcbe18e7fe4?q=80&w=2125&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: cover,
       text: "Od kroasana, preko komadnih i sitnih kolača, do torti za sva slavlja, kreiranih ručno i od kvalitetnih sastojaka, Mama Goca drži standard koji ne pristaje na kompromise.",
     },
     {
       id: 4,
-      image:
-        "https://plus.unsplash.com/premium_photo-1665669263531-cdcbe18e7fe4?q=80&w=2125&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: meda,
       text: "Uživajte i vi u savršenom spoju modernog i tradicionalnog koji vam donosi Mama Gocina poslastičarnica. Poručite naše kolače, svratite na kratki predah i prepustite se trenutku u kome sve postaje - slatko.",
     },
   ];

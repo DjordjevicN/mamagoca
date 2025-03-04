@@ -1,7 +1,7 @@
 import React from "react";
-import waffle from "../assets/waffle.png";
+import waffle from "../assets/hero.png";
 import { motion } from "framer-motion";
-// Wolt trenutno jebe
+
 const Hero = () => {
   return (
     <section className="relative h-[75vh] px-5 overflow-hidden">
@@ -27,7 +27,7 @@ const Hero = () => {
               nešto slatko?
             </h1>
           </motion.div>
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -40,7 +40,7 @@ const Hero = () => {
             >
               Poruči odmah
             </a>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>
