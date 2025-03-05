@@ -1,22 +1,12 @@
 import axios from "axios";
-interface Product {
-  id: number;
-  name: string;
-  description: any;
-  regularPrice: string;
-  salePrice: string;
-  onSale: boolean;
-  image: string;
-  category: string;
-  favorite: boolean;
-}
+import { ProductType } from "./dataTypes/productTypes";
 
 const API_URL = `https://baza.mamagoca.com/wp-json/wc/v3/products`;
 
 export const fetchProducts = async () => {
   let page = 1;
   const perPage = 100; // Adjust this number as needed
-  let allProducts: Product[] = [];
+  let allProducts: ProductType[] = [];
   let hasMoreProducts = true;
 
   while (hasMoreProducts) {
@@ -30,7 +20,7 @@ export const fetchProducts = async () => {
     });
 
     if (data.length > 0) {
-      const sortedProducts: Product[] = data.map((product: any) => ({
+      const sortedProducts: ProductType[] = data.map((product: any) => ({
         id: product.id,
         name: product.name,
         description: product.description,

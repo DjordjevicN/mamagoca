@@ -18,13 +18,13 @@ const DropdownMenu = () => {
     setMenuOpen(false);
   };
 
-  const handleUpdateType = (newType) => {
+  const handleUpdateType = (newType: string) => {
     dispatch(updateProductType(newType));
   };
   const isRouteHome = window.location.pathname === "/";
 
-  const handleClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       handleClose();
     }
   };
