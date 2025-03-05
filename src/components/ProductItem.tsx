@@ -1,15 +1,12 @@
-import React from "react";
 import { motion } from "framer-motion";
-
-const ProductItem = ({ product, index }) => {
-  const {
-    name,
-    image,
-    description,
-    currency = "RSD",
-    salePrice,
-    regularPrice,
-  } = product;
+import { ProductType } from "./dataTypes/productTypes";
+import { currency } from "./constants/constants";
+interface ProductItemProps {
+  product: ProductType;
+  index: number;
+}
+const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
+  const { name, image, description, salePrice, regularPrice } = product;
   const currentPrice = salePrice || regularPrice;
 
   return (

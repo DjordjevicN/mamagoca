@@ -17,12 +17,12 @@ const Navigation = () => {
     setContactOpen(false);
   };
 
-  const handleUpdateType = (newType) => {
+  const handleUpdateType = (newType: string) => {
     dispatch(updateProductType(newType));
   };
 
-  const handleClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       setContactOpen(false);
     }
   };

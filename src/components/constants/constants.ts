@@ -9,3 +9,4 @@ export const URLs = {
   about: "/about",
   sitniKolaci: "/sitni-kolaci",
 };
+export const currency = "RSD";

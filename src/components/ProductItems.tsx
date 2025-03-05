@@ -1,7 +1,16 @@
 import React from "react";
 import ProductItem from "./ProductItem";
-
-const ProductItems = ({ products, isLoading, error }) => {
+import { ProductType } from "./dataTypes/productTypes";
+interface ProductItemsProps {
+  isLoading: boolean;
+  error: any;
+  products: ProductType[] | undefined;
+}
+const ProductItems: React.FC<ProductItemsProps> = ({
+  products,
+  isLoading,
+  error,
+}) => {
   if (isLoading || !products)
     return (
       <div className="mt-20 min-h-[50vh] text-center">
