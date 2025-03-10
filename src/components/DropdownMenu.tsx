@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
-import ContactInformation from "./ContactInformation";
+import ContactInformation from "./contact/ContactInformation";
 import { useDispatch } from "react-redux";
 import { updateProductType } from "../productSlice";
-import { PRODUCT_TYPES, URLs } from "./constants/constants";
+import { PRODUCT_TYPES, navigationURLs } from "./constants/constants";
 
 const DropdownMenu = () => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const DropdownMenu = () => {
           <div className="flex flex-col text-left gap-4">
             <a
               className="border-b-2"
-              href={URLs.torte}
+              href={navigationURLs.torte}
               onClick={() => {
                 handleUpdateType(PRODUCT_TYPES.TORTE);
                 handleClose();
@@ -72,7 +72,7 @@ const DropdownMenu = () => {
             </a>
             <a
               className="border-b-2"
-              href={URLs.kolaci}
+              href={navigationURLs.kolaci}
               onClick={() => {
                 handleUpdateType(PRODUCT_TYPES.KOLACI);
                 handleClose();
@@ -82,7 +82,7 @@ const DropdownMenu = () => {
             </a>
             <a
               className="border-b-2"
-              href={URLs.sitniKolaci}
+              href={navigationURLs.sitniKolaci}
               onClick={() => {
                 handleUpdateType(PRODUCT_TYPES.KOLACI);
                 handleClose();

@@ -1,6 +1,3 @@
-import React from "react";
-import Logo from "./Logo";
-import Navigation from "./Navigation";
 import Hero from "./Hero";
 import ProductFilterCards from "./ProductFilterCards";
 import HomeProductsDisplay from "./HomeProductsDisplay";
@@ -14,8 +11,8 @@ const Home = () => {
       <div className="min-h-screen ">
         <Hero />
       </div>
-      <section className="bg-white px-4 mt-10 py-20">
-        <ProductFilterCards />
+      <section className="bg-white px-4 mt-10 pb-20 pt-5">
+        {/* <ProductFilterCards /> */}
         <HomeProductsDisplay />
       </section>
       <section>

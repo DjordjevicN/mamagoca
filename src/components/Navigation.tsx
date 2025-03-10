@@ -1,66 +1,24 @@
-import React, { useEffect, useRef, useState } from "react";
-import Contact from "./Contact";
-import { URLs } from "./constants/constants";
-import { PRODUCT_TYPES } from "./constants/constants";
-import { useDispatch } from "react-redux";
-import { updateProductType } from "../productSlice";
+import { useRef, useState } from "react";
+
+import { navigationURLs } from "./constants/constants";
+import useClickOutside from "../hooks/useClickOutside";
+import Contact from "./contact/Contact";
 
 const Navigation = () => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const dispatch = useDispatch();
   const [contactOpen, setContactOpen] = useState(false);
 
-  const openContact = () => {
-    setContactOpen(true);
-  };
-  const closeContact = () => {
-    setContactOpen(false);
-  };
-
-  const handleUpdateType = (newType: string) => {
-    dispatch(updateProductType(newType));
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      setContactOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    if (contactOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [contactOpen]);
+  const openContact = () => setContactOpen(true);
+  const closeContact = () => setContactOpen(false);
+  useClickOutside(modalRef, closeContact);
 
   return (
     <div className="md:block hidden" ref={modalRef}>
       <div className="text-mainText max-w-screen-md flex justify-between mx-auto p-4 mt-16">
-        <a href={URLs.home}>Home</a>
-        <a
-          onClick={() => handleUpdateType(PRODUCT_TYPES.TORTE)}
-          href={URLs.torte}
-        >
-          Torte
-        </a>
-        <a
-          onClick={() => handleUpdateType(PRODUCT_TYPES.KOLACI)}
-          href={URLs.kolaci}
-        >
-          Kolači
-        </a>
-        <a
-          onClick={() => handleUpdateType(PRODUCT_TYPES.KOLACI)}
-          href={URLs.sitniKolaci}
-        >
-          Sitni Kolači
-        </a>
+        <a href={navigationURLs.home}>Home</a>
+        <a href={navigationURLs.torte}>Torte</a>
+        <a href={navigationURLs.kolaci}>Kolači</a>
+        <a href={navigationURLs.sitniKolaci}>Sitni Kolači</a>
         <button onClick={openContact}>Kontakt</button>
       </div>
       {contactOpen && <Contact closeContact={closeContact} />}
