@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import plus from "../assets/plus.svg";
-
-const FAQCard = ({ content }) => {
-  const [isOpen, setIsOpen] = useState(false);
+interface FAQCardProps {
+  content: {
+    title: string;
+    description: string;
+  };
+}
+const FAQCard: React.FC<FAQCardProps> = ({ content }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleOpen = () => setIsOpen(!isOpen);
   return (
     <div className="w-full py-5">
@@ -17,7 +22,6 @@ const FAQCard = ({ content }) => {
           {content.description}
         </p>
       )}
-
       <div className="h-[1px] bg-slate-300 w-full mt-5 text-xs sm:text-base"></div>
     </div>
   );

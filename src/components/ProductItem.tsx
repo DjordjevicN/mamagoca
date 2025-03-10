@@ -22,7 +22,12 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
       className="text-center mx-auto"
     >
       {image && (
-        <img src={image} alt="Product image" className="w-[150px] mx-auto" />
+        <img
+          src={image}
+          loading="lazy"
+          alt="Product image"
+          className="w-[150px] mx-auto"
+        />
       )}
       <h1 className="mainFont text-mainBlack text-2xl mt-4">{name}</h1>
 

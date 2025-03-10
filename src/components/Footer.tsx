@@ -1,5 +1,4 @@
-import React from "react";
-import ContactInformation from "./ContactInformation";
+import ContactInformation from "./contact/ContactInformation";
 
 const Footer = () => {
   return (

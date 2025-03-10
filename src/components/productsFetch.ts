@@ -1,11 +1,10 @@
 import axios from "axios";
 import { ProductType } from "./dataTypes/productTypes";
-
-const API_URL = `https://baza.mamagoca.com/wp-json/wc/v3/products`;
+import { API_URL } from "./constants/constants";
 
 export const fetchProducts = async () => {
   let page = 1;
-  const perPage = 100; // Adjust this number as needed
+  const perPage = 100;
   let allProducts: ProductType[] = [];
   let hasMoreProducts = true;
 

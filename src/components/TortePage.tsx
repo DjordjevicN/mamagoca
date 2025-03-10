@@ -1,15 +1,10 @@
-import React from "react";
-
+import torta from "../assets/torta.jpeg";
 const TortePage = () => {
   return (
     <div className="mt-16 bg-white py-40 flex justify-center">
       <div className="flex flex-col md:flex-row gap-8 max-w-[1200px] mx-auto px-8">
         <div>
-          <img
-            className="max-w-lg"
-            src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="wedding cake"
-          />
+          <img className="max-w-lg" src={torta} alt="wedding cake" />
         </div>
         <div className="max-w-lg">
           <h1 className="mainFont text-5xl mb-8">Torte</h1>

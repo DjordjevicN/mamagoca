@@ -1,8 +1,12 @@
 import React from "react";
-import ContactInformation from "./ContactInformation";
-import close from "../assets/close.svg";
+import close from "../../assets/close.svg";
 
-const Contact = ({ closeContact }) => {
+import ContactInformation from "./ContactInformation";
+interface ContactProps {
+  closeContact: () => void;
+}
+
+const Contact: React.FC<ContactProps> = ({ closeContact }) => {
   return (
     <div className="fixed z-50 top-1 right-1 p-16 shadow-md rounded-md bg-white">
       <button

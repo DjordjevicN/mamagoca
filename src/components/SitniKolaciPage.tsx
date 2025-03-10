@@ -1,4 +1,4 @@
-import React from "react";
+import sitnicokaci from "../assets/sitnikolaci.png";
 
 const SitniKolaciPage = () => {
   return (
@@ -6,8 +6,9 @@ const SitniKolaciPage = () => {
       <div className="flex flex-col md:flex-row gap-8 max-w-[1200px] mx-auto px-8">
         <div>
           <img
-            className="max-w-lg"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGpYKgMd86P8KA3qlxJMGygjnoYWE_sZ5erQ&s"
+            loading="lazy"
+            className="max-w-[400px]"
+            src={sitnicokaci}
             alt="wedding cake"
           />
         </div>

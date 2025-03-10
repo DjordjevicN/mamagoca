@@ -1,12 +1,11 @@
-import React from "react";
 import constructiuonImage from "../assets/construction.jpg";
 import instagram from "../assets/instagram.svg";
 import facebook from "../assets/facebook.svg";
 import tiktok from "../assets/tiktok.svg";
-import x from "../assets/x.svg";
+// import x from "../assets/x.svg";
 const Construction = () => {
   return (
-    <div className="bg-[#3F0767] min-h-screen  flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center">
       <div className="flex-col-reverse flex lg:flex-row justify-between items-center max-w-[1800px] mx-auto px-6">
         <div>
           <h1 className="text-white text-2xl md:text-5xl font-bold mb-6">
@@ -27,9 +26,10 @@ const Construction = () => {
             <a target="_blank" href="https://www.facebook.com/mamagoca">
               <img src={facebook} alt="facebook" />
             </a>
-            <a target="_blank" href="/">
+            {/* Waiting for owner to provide URL */}
+            {/* <a target="_blank" href="/">
               <img src={x} alt="x" />
-            </a>
+            </a> */}
             <a target="_blank" href="/">
               <img src={tiktok} alt="tiktok" />
             </a>

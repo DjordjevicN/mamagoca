@@ -18,4 +18,7 @@ const Logo: React.FC<LogoProps> = ({ noMenu }) => {
   );
 };
 
-export default Logo;
+export default React.memo(
+  Logo,
+  (prevProps, nextProps) => prevProps.noMenu === nextProps.noMenu
+);
