@@ -50,7 +50,8 @@ const TortePage = () => {
                 Ukus vaše torte može biti bilo koji od naših već omiljenih ukusa
                 koje nudimo kao kolače. Izaberite svoj omiljeni i uživajte u
                 savršenoj kombinaciji ukusa u obliku torte! <br />
-                <strong> Preporučeni ukusi:</strong> Kinder, Čoko malina, Oreo
+                <strong> Preporučeni ukusi:</strong> Kinder, Čoko malina, Bela
+                dama
               </p>
             </div>
             <div className="mt-16">
