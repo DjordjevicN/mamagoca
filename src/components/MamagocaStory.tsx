@@ -53,7 +53,7 @@ const MamagocaStory = () => {
                 <div>
                   <img
                     loading="lazy"
-                    className="max-w-[500px] w-full"
+                    className="max-w-[500px] w-full rounded-xl"
                     src={item.image}
                     alt="poslasticarnica"
                   />
