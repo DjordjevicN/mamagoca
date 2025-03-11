@@ -19,16 +19,11 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
         visible: { opacity: 1, y: 0 },
         hidden: { opacity: 0, y: 100 },
       }}
-      className="text-center mx-auto"
+      className="text-center mx-auto max-w-[320px]"
     >
-      {image && (
-        <img
-          src={image}
-          loading="lazy"
-          alt="Product image"
-          className="w-[150px] mx-auto"
-        />
-      )}
+      <div className="w-[150px] h-[150px] mx-auto">
+        {image && <img src={image} loading="lazy" alt={name} />}
+      </div>
       <h1 className="mainFont text-mainBlack text-2xl mt-4">{name}</h1>
 
       {description && (

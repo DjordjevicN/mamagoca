@@ -9,6 +9,7 @@ const KolaciPage = () => {
     error,
     isLoading,
   } = useQuery("products", fetchProducts);
+
   const kolaci = products?.filter((product) => product.category === "kolac");
   return (
     <div className="bg-white">
