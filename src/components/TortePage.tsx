@@ -40,7 +40,11 @@ const TortePage = () => {
         <div className="flex flex-col xl:flex-row gap-8 max-w-[1200px] mx-auto px-8">
           <h1 className="mainFont text-5xl mb-8 xl:hidden">Torte</h1>
           <div>
-            <img className="max-w-[600px]" src={torta} alt="wedding cake" />
+            <img
+              className="max-w-[600px] w-full"
+              src={torta}
+              alt="wedding cake"
+            />
           </div>
           <div className="max-w-lg">
             <h1 className="mainFont text-5xl mb-8 xl:flex hidden">Torte</h1>

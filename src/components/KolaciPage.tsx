@@ -1,4 +1,3 @@
-import React from "react";
 import ProductItems from "./ProductItems";
 import { useQuery } from "react-query";
 import { fetchProducts } from "./productsFetch";
