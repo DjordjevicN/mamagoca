@@ -28,7 +28,7 @@ const SitniKolaciPage = () => {
             </p>
             <p className="mt-4">
               Uživajte u raznovrsnim ukusima: Jafa, karamela, nugat, kikiriki
-              bañadera, lešnik kugla i malina.
+              bajadera, lešnik kugla i malina.
             </p>
             <p className="mt-4">
               Za porudžbine i dodatne informacije, kontaktirajte nas!

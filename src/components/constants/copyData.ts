@@ -7,7 +7,7 @@ export const FAQContent = [
   {
     title: "Ručno rađene torte i kolače za tvoja slavlja.",
     description:
-      "Pravimo sitne kolače za slave, proslave i druga posebna okupljanja. Takođe, izrađujemo prelepe torte za venčanja, rođendane i korporativne događaje, prilagođene vašim željama.",
+      "Pravimo prelepe torte za venčanja, rođendane i korporativne događaje, prilagođene vašim željama. Takođe, izrađujemo sitne kolače za slave, proslave i druga posebna okupljanja.",
   },
   {
     title: "Dostavu na kućnu adresu.",
