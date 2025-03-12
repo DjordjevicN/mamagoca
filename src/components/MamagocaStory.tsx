@@ -46,7 +46,7 @@ const MamagocaStory = () => {
                   visible: { opacity: 1, y: 0 },
                   hidden: { opacity: 0, y: 100 },
                 }}
-                className={`flex flex-col h-[70vh] gap-8 items-center lg:flex-row lg:justify-between ${
+                className={`flex flex-col min-h-[70vh] gap-8 items-center lg:flex-row lg:justify-between ${
                   index % 2 !== 0 ? "lg:flex-row-reverse" : ""
                 }`}
               >
@@ -58,9 +58,10 @@ const MamagocaStory = () => {
                     alt="poslasticarnica"
                   />
                 </div>
-                <div className="max-w-[500px] ">
-                  <p className="storyFont text-2xl opacity-65">{item.text}</p>
-                </div>
+
+                <p className="max-w-[500px] storyFont text-2xl opacity-65 pb-20">
+                  {item.text}
+                </p>
               </motion.div>
             </div>
           </div>

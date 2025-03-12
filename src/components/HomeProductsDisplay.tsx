@@ -52,7 +52,7 @@ const HomeProductsDisplay = () => {
         <HomeProducts />
         <div className="flex justify-center mt-20">
           <a
-            className="bg-accent py-4 px-14 mt-10 font-thin text-white hover:opacity-80 transition-all duration-300 rounded-[4px]"
+            className="bg-[#DCC7A3] py-4 px-14 mt-10 font-thin text-black hover:opacity-80 transition-all duration-300 rounded-[4px]"
             href="/kolaci"
           >
             Pogledaj sve naše kolače
