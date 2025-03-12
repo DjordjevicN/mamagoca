@@ -1,4 +1,3 @@
-import React from "react";
 import ornament from "../assets/ornament.svg";
 import ProductItem from "./ProductItem";
 import { motion } from "framer-motion";
@@ -51,6 +50,14 @@ const HomeProductsDisplay = () => {
       </motion.div>
       <div>
         <HomeProducts />
+        <div className="flex justify-center mt-20">
+          <a
+            className="bg-accent py-4 px-14 mt-10 font-thin text-white hover:opacity-80 transition-all duration-300 rounded-[4px]"
+            href="/kolaci"
+          >
+            Pogledaj sve naše kolače
+          </a>
+        </div>
       </div>
     </div>
   );

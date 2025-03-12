@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from "./store";
 import { Provider } from "react-redux";
 import Footer from "./components/Footer";
-import Construction from "./components/Construction";
+// import Construction from "./components/Construction";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { lazy, Suspense, useMemo } from "react";
 import { navigationURLs } from "./components/constants/constants";
@@ -17,10 +17,10 @@ const SitniKolaci = lazy(() => import("./components/SitniKolaciPage"));
 const { home, torte, sitniKolaci, kolaci } = navigationURLs;
 
 export default function App() {
-  const featureLock = Boolean(localStorage.getItem("featureLock"));
+  // const featureLock = Boolean(localStorage.getItem("featureLock"));
   const queryClient = useMemo(() => new QueryClient(), []);
 
-  if (!featureLock) return <Construction />;
+  // if (!featureLock) return <Construction />;
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>

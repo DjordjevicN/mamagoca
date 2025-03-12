@@ -58,8 +58,8 @@ const MamagocaStory = () => {
                     alt="poslasticarnica"
                   />
                 </div>
-                <div className="max-w-[500px]">
-                  <p>{item.text}</p>
+                <div className="max-w-[500px] ">
+                  <p className="storyFont text-2xl opacity-65">{item.text}</p>
                 </div>
               </motion.div>
             </div>
