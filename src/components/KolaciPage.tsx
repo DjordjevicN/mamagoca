@@ -10,7 +10,9 @@ const KolaciPage = () => {
     isLoading,
   } = useQuery("products", fetchProducts);
 
-  const kolaci = products?.filter((product) => product.category === "kolac");
+  const kolaci = products
+    ?.filter((product) => product.category === "kolac")
+    .reverse();
   return (
     <div className="bg-white">
       <h1 className="mainFont text-4xl text-center mt-10 pt-20">Kolači</h1>
