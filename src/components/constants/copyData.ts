@@ -12,6 +12,6 @@ export const FAQContent = [
   {
     title: "Dostavu na kućnu adresu.",
     description:
-      "Omiljene kolače možete poručiti i uživati u njima bez izlaska iz kuće. Dostava je dostupna putem Wolt aplikacije, brzo i jednostavno!",
+      "Omiljene kolače možete poručiti i uživati u njima bez izlaska iz kuće. Dostava je dostupna putem MisterD aplikacije, brzo i jednostavno!",
   },
 ];

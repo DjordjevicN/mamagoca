@@ -27,7 +27,7 @@ const Hero = () => {
               nešto slatko?
             </h1>
           </motion.div>
-          {/* <motion.div
+          <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -35,12 +35,12 @@ const Hero = () => {
           >
             <a
               target="_blank"
-              href="https://wolt.com/sr/srb/belgrade/restaurant/mama-goca-zemun?srsltid=AfmBOorVx-dlSe9uASbEVdKeUtTPeBKL-I5SRozPju-2efgGaw5Drq63"
+              href="https://misterd.rs/place/mama-goca-dostava"
               className="bg-accent py-4 px-14 mt-10 font-thin text-white hover:opacity-80 transition-all duration-300 rounded-[4px]"
             >
               Poruči odmah
             </a>
-          </motion.div> */}
+          </motion.div>
         </div>
       </div>
     </section>
