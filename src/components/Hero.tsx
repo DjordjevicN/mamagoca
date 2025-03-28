@@ -31,14 +31,22 @@ const Hero = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mt-10"
+            className="flex flex-row gap-3 mt-10"
           >
             <a
               target="_blank"
               href="https://misterd.rs/place/mama-goca-dostava"
-              className="bg-accent py-4 px-14 mt-10 font-thin text-white hover:opacity-80 transition-all duration-300 rounded-[4px]"
+              className="inline-flex items-center bg-accent w-full py-2 px-4 text-white font-thin transition-all duration-300 rounded-[4px] hover:opacity-80 justify-center"
             >
-              Poruči odmah
+              MrD
+            </a>
+
+            <a
+              target="_blank"
+              href="https://wolt.com/sr/srb/belgrade/restaurant/mama-goca-zemun"
+              className="inline-flex items-center bg-accent  w-full py-2 px-4 text-white font-thin transition-all duration-300 rounded-[4px] hover:opacity-80 justify-center"
+            >
+              Wolt
             </a>
           </motion.div>
         </div>
