@@ -86,6 +86,7 @@ const TortePage = () => {
                 src={torta.image}
                 alt={torta.name}
               />
+              {/* <div dangerouslySetInnerHTML={{ __html: torta.description }} /> */}
             </div>
           );
         })}
