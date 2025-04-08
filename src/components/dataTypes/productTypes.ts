@@ -8,4 +8,5 @@ export interface ProductType {
   image: string;
   category: string;
   favorite: boolean;
+  new: {} | null;
 }

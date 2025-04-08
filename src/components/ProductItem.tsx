@@ -19,8 +19,13 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
         visible: { opacity: 1, y: 0 },
         hidden: { opacity: 0, y: 100 },
       }}
-      className="text-center mx-auto max-w-[320px]"
+      className="text-center mx-auto max-w-[320px] relative"
     >
+      {product.new && (
+        <div className="absolute top-0 right-0 bg-yellow-500 text-white rounded-full py-2 px-4">
+          <p>Novo</p>
+        </div>
+      )}
       <div className="w-[150px] h-[150px] mx-auto">
         {image && <img src={image} loading="lazy" alt={name} />}
       </div>

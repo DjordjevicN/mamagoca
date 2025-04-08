@@ -19,7 +19,7 @@ export const fetchProducts = async () => {
     });
 
     if (data.length > 0) {
-      const sortedProducts: ProductType[] = data.map((product: any) => ({
+      const formattedProducts: ProductType[] = data.map((product: any) => ({
         id: product.id,
         name: product.name,
         description: product.description,
@@ -29,9 +29,15 @@ export const fetchProducts = async () => {
         image: product.images[0].src,
         category: product.categories[0].name,
         favorite: product.featured,
+        new: product.tags[0] || null,
       }));
-
-      allProducts = [...allProducts, ...sortedProducts];
+      const sortByNew = (a: ProductType, b: ProductType) => {
+        if (a.new && !b.new) return 1;
+        if (!a.new && b.new) return -1;
+        return 0;
+      };
+      formattedProducts.sort(sortByNew);
+      allProducts = [...allProducts, ...formattedProducts];
       page++;
     } else {
       hasMoreProducts = false;
