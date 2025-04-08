@@ -22,7 +22,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
       className="text-center mx-auto max-w-[320px] relative"
     >
       {product.new && (
-        <div className="absolute top-0 right-0 bg-yellow-500 text-white rounded-full py-2 px-4">
+        <div className="absolute top-0 left-0 bg-yellow-500 text-white rounded-full py-1 px-4">
           <p>Novo</p>
         </div>
       )}
