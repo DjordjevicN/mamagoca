@@ -15,7 +15,7 @@ export const API_URL = `https://baza.mamagoca.com/wp-json/wc/v3/products`;
 export const shopInformation = {
   address: "Džona Kenedija 31g, Belgrade, Serbia 11000",
   phone: "065 319 27 27",
-  email: "poslasticarnica@mamagoca.com",
+  email: "mgsweetsdoo@gmail.com",
   workingHours: {
     workdays: "Ponedeljak - Subota: 10:00am - 9:00pm",
     sunday: "Nedelja: 10:30am - 5:00pm",
