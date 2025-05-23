@@ -17,8 +17,8 @@ export const shopInformation = {
   phone: "065 319 27 27",
   email: "mgsweetsdoo@gmail.com",
   workingHours: {
-    workdays: "Ponedeljak - Subota: 10:00am - 9:00pm",
-    sunday: "Nedelja: 10:30am - 5:00pm",
+    workdays: "Ponedeljak - Subota: 10:00am - 10:00pm",
+    sunday: "Nedelja: 11:00am - 6:00pm",
   },
 };
 export const socialMedia = {
