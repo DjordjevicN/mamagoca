@@ -77,7 +77,7 @@ const TortePage = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-between flex-wrap md:flex-row gap-8 max-w-[1200px] mx-auto px-8 mt-20">
+      <div className="flex flex-col flex-wrap md:flex-row gap-8 max-w-[1200px] mx-auto px-8 mt-20">
         {torte.map((torta) => {
           return (
             <div className="w-[250px] h-[250px] gap-3" key={torta.id}>
