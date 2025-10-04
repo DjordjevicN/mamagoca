@@ -13,12 +13,23 @@ export const navigationURLs = {
 export const currency = "RSD";
 export const API_URL = `https://baza.mamagoca.com/wp-json/wc/v3/products`;
 export const shopInformation = {
-  address: "Džona Kenedija 31g, Belgrade, Serbia 11000",
+  address: "Džona Kenedija 31g, Novi Beograd, Srbija",
+  gps: "https://maps.app.goo.gl/LGAdLBHxrhoZB98f7",
   phone: "065 319 27 27",
   email: "mgsweetsdoo@gmail.com",
   workingHours: {
     workdays: "Ponedeljak - Subota: 10:00am - 10:00pm",
     sunday: "Nedelja: 11:00am - 6:00pm",
+  },
+};
+export const shopInformation2 = {
+  address: "Kičevska 19, Beograd, Srbija",
+  gps: "https://maps.app.goo.gl/c2t3epPFAjJXLRAA8",
+  phone: "065 319 27 27",
+  email: "mgsweetsdoo@gmail.com",
+  workingHours: {
+    workdays: "Ponedeljak - Subota: 8:00am - 10:00pm",
+    sunday: "Nedelja: 9:00am - 4:00pm",
   },
 };
 export const socialMedia = {
