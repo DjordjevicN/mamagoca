@@ -1,3 +1,8 @@
+# Redirect sa poddomena na glavnu domenu
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^mamagoca\.nikola-djordjevic\.com$ [NC]
+RewriteRule ^(.*)$ https://mamagoca.com/$1 [R=301,L]
+
 # Redirect all requests to index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
