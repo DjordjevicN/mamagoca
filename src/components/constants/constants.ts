@@ -21,6 +21,15 @@ export const shopInformation = {
     sunday: "Nedelja: 11:00am - 6:00pm",
   },
 };
+export const shopInformation2 = {
+  address: "Kičevska 19, Belgrade, Serbia 11000",
+  phone: "065 319 27 27",
+  email: "mgsweetsdoo@gmail.com",
+  workingHours: {
+    workdays: "Ponedeljak - Subota: 08:00am - 10:00pm",
+    sunday: "Nedelja: 09:00am - 04:00pm",
+  },
+};
 export const socialMedia = {
   instagram: "https://www.instagram.com/mama_goca/",
   facebook: "https://www.facebook.com/mamagoca",
