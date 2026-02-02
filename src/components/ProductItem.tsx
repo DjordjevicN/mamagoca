@@ -39,7 +39,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
 
       {currentPrice && (
         <div className="mt-4">
-          <p className="font-thin">{`${currentPrice} ${currency}`}</p>
+          {/* <p className="font-thin">{`${currentPrice} ${currency}`}</p> */}
           {salePrice && (
             <p className="text-red-500 line-through">{`${regularPrice} ${currency}`}</p>
           )}

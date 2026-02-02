@@ -40,11 +40,11 @@ const ContactInformation: React.FC<ContactInformationProps> = ({ noMenu }) => {
         <p className="mb-3 font-bold">{shopInformation.address}</p>
         <p>{shopInformation.workingHours.workdays}</p>
         <p>{shopInformation.workingHours.sunday}</p>
-        <div className="mt-5">
+        {/* <div className="mt-5">
           <p className="mb-3 font-bold">{shopInformation2.address}</p>
           <p>{shopInformation2.workingHours.workdays}</p>
           <p>{shopInformation2.workingHours.sunday}</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
