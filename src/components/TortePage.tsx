@@ -1,39 +1,7 @@
-import { useQuery } from "react-query";
 import torta from "../assets/torta.jpeg";
-import { fetchProducts } from "./productsFetch";
+import { tortes } from "./constants/tortes";
+
 const TortePage = () => {
-  const {
-    data: products,
-    error,
-    isLoading,
-  } = useQuery("products", fetchProducts);
-
-  if (isLoading || !products)
-    return (
-      <div className="mt-20 min-h-[50vh] text-center">
-        <div className="flex justify-center flex-col items-center">
-          <h1 className="animate-pulse mainFont text-2xl lg:text-4xl mt-10">
-            Loading . . .
-          </h1>
-        </div>
-      </div>
-    );
-
-  if (error)
-    return (
-      <div className="mt-20 min-h-[50vh] text-center">
-        <div className="flex justify-center flex-col items-center px-3">
-          <h1 className="mainFont text-2xl lg:text-4xl mt-10">
-            Došlo je do greške prilikom učitavanja podataka
-          </h1>
-          <p className="lg:text-2xl mt-2 lg:mt-4">
-            Molimo vas da pokušate ponovo kasnije.
-          </p>
-        </div>
-      </div>
-    );
-
-  const torte = products?.filter((product) => product.category === "torta");
   return (
     <div className="mt-16 bg-white py-40 ">
       <div className="flex justify-center">
@@ -76,7 +44,9 @@ const TortePage = () => {
         </div>
       </div>
       <div className="flex flex-col flex-wrap md:flex-row gap-8 max-w-[1200px] mx-auto px-8 mt-20">
-        {torte.map((torta) => {
+        {tortes
+          .filter((torta) => torta.image)
+          .map((torta) => {
           return (
             <div className="w-[250px] h-[250px] gap-3" key={torta.id}>
               <img

@@ -1,19 +1,12 @@
 import ornament from "../assets/ornament.svg";
 import ProductItem from "./ProductItem";
 import { motion } from "framer-motion";
-import { useQuery } from "react-query";
-import { fetchProducts } from "./productsFetch";
+import { favoriteCakes } from "./constants/cakes";
 
 const HomeProducts = () => {
-  const { data: products } = useQuery("products", fetchProducts);
-
-  const favoriteCakes = products?.filter(
-    (product) => product.favorite === true
-  );
-
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-20">
-      {favoriteCakes?.map((product, i) => {
+      {favoriteCakes.map((product, i) => {
         return <ProductItem key={product.id} product={product} index={i} />;
       })}
     </div>

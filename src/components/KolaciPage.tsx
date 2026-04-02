@@ -1,21 +1,13 @@
 import ProductItems from "./ProductItems";
-import { useQuery } from "react-query";
-import { fetchProducts } from "./productsFetch";
+import { cakes } from "./constants/cakes";
 
 const KolaciPage = () => {
-  const {
-    data: products,
-    error,
-    isLoading,
-  } = useQuery("products", fetchProducts);
+  const kolaci = [...cakes].reverse();
 
-  const kolaci = products
-    ?.filter((product) => product.category === "kolac")
-    .reverse();
   return (
     <div className="bg-white">
       <h1 className="mainFont text-4xl text-center mt-10 pt-20">Kolači</h1>
-      <ProductItems products={kolaci} isLoading={isLoading} error={error} />
+      <ProductItems products={kolaci} isLoading={false} error={null} />
     </div>
   );
 };
