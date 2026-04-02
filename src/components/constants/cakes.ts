@@ -73,7 +73,7 @@ export const cakes: ProductType[] = [
     onSale: false,
     image: jaffa,
     category: "kolac",
-    favorite: true,
+    favorite: false,
     new: false,
   },
   {
@@ -86,7 +86,7 @@ export const cakes: ProductType[] = [
     image: kinderBueno,
     category: "kolac",
     favorite: true,
-    new: true,
+    new: false,
   },
   {
     id: 7,
@@ -182,7 +182,7 @@ export const cakes: ProductType[] = [
     image: dubai,
     category: "kolac",
     favorite: true,
-    new: true,
+    new: false,
   },
   {
     id: 15,

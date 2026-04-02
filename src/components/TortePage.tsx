@@ -47,17 +47,16 @@ const TortePage = () => {
         {tortes
           .filter((torta) => torta.image)
           .map((torta) => {
-          return (
-            <div className="w-[250px] h-[250px] gap-3" key={torta.id}>
-              <img
-                className="w-full h-full object-cover rounded-lg"
-                src={torta.image}
-                alt={torta.name}
-              />
-              {/* <div dangerouslySetInnerHTML={{ __html: torta.description }} /> */}
-            </div>
-          );
-        })}
+            return (
+              <div className="w-[250px] h-[250px] gap-3" key={torta.id}>
+                <img
+                  className="w-full h-full object-cover rounded-lg"
+                  src={torta.image}
+                  alt={torta.name}
+                />
+              </div>
+            );
+          })}
       </div>
     </div>
   );
