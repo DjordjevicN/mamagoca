@@ -2,7 +2,6 @@ import belaDama from "../../assets/cakes/Bela-dama.png";
 import cheesecake from "../../assets/cakes/Cheesecake.png";
 import cokoMalina from "../../assets/cakes/Coko-malina.png";
 import esterhaise from "../../assets/cakes/Esterhaise.png";
-import jaffa from "../../assets/cakes/Jaffa.png";
 import kinderBueno from "../../assets/cakes/Kinder-Bueno.png";
 import moskva from "../../assets/cakes/Moskva.png";
 import oreo from "../../assets/cakes/Oreo.png";
@@ -19,7 +18,7 @@ export const cakes: ProductType[] = [
   {
     id: 1,
     name: "Bela dama",
-    description: "Lagani kremasti kolac sa belom cokoladom.",
+    description: "Bela čokolada, pistaći, maline",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -31,7 +30,7 @@ export const cakes: ProductType[] = [
   {
     id: 2,
     name: "Cheesecake",
-    description: "Kremasti cheesecake sa osvezavajucim ukusom.",
+    description: "Plazma, Krem sir, Voće u želeu",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -43,7 +42,7 @@ export const cakes: ProductType[] = [
   {
     id: 3,
     name: "Coko malina",
-    description: "Spoj cokolade i maline u bogatom kremastom filu.",
+    description: "Čokolada, Malina, Puter",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -55,7 +54,7 @@ export const cakes: ProductType[] = [
   {
     id: 4,
     name: "Esterhaise",
-    description: "Klasican ukus sa orasima i bogatim filom.",
+    description: "Čokolada, Lešnik, Puter",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -64,22 +63,11 @@ export const cakes: ProductType[] = [
     favorite: false,
     new: false,
   },
-  {
-    id: 5,
-    name: "Jaffa",
-    description: "Cokoladni kolac sa prepoznatljivom notom pomorandze.",
-    regularPrice: "",
-    salePrice: "",
-    onSale: false,
-    image: jaffa,
-    category: "kolac",
-    favorite: false,
-    new: false,
-  },
+
   {
     id: 6,
     name: "Kinder Bueno",
-    description: "Nezan fil sa lesnikom inspirisan Kinder Bueno ukusom.",
+    description: "Mlečna čokolada, Lešnik, Mlečna slatka pavlaka",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -91,7 +79,7 @@ export const cakes: ProductType[] = [
   {
     id: 7,
     name: "Moskva",
-    description: "Vocni i kremasti klasik za ljubitelje laganijih ukusa.",
+    description: "Višnje, Ananas, Orah",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -103,7 +91,7 @@ export const cakes: ProductType[] = [
   {
     id: 8,
     name: "Oreo",
-    description: "Kremasti Oreo kolac sa hrskavim detaljima.",
+    description: "Keks, Čokolada, Mlečna pavlaka",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -115,7 +103,7 @@ export const cakes: ProductType[] = [
   {
     id: 9,
     name: "Pita jabuka",
-    description: "Domaci ukus jabuke u modernom izdanju.",
+    description: "Jabuke, Orasi, Cimet, Domaċe testo",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -127,7 +115,7 @@ export const cakes: ProductType[] = [
   {
     id: 10,
     name: "Prase",
-    description: "Bogati kremasti kolac prepoznatljivog izgleda.",
+    description: "Vanila, Jagoda, Plazma",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -139,7 +127,7 @@ export const cakes: ProductType[] = [
   {
     id: 11,
     name: "Toffe",
-    description: "Karamelasti ukus sa punim i toplim notama.",
+    description: "Mlečna čokolada, Karamela, Krokant keks",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -150,8 +138,8 @@ export const cakes: ProductType[] = [
   },
   {
     id: 12,
-    name: "Twist",
-    description: "Razigran spoj vise ukusa u jednom kolacu.",
+    name: "Ferrero",
+    description: "Crna Čokolada, Mlečna slatka pavlaka, Hrskava čokolada",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -163,7 +151,7 @@ export const cakes: ProductType[] = [
   {
     id: 13,
     name: "Zito sa slagom",
-    description: "Tradicionalni ukus u elegantnom poslasticarskom obliku.",
+    description: "Porcija 120g",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -175,7 +163,7 @@ export const cakes: ProductType[] = [
   {
     id: 14,
     name: "Dubai",
-    description: "Savremen kolac bogatog i punog ukusa.",
+    description: "Pistaći, Kadaif, Mlečna čokolada",
     regularPrice: "",
     salePrice: "",
     onSale: false,
@@ -187,7 +175,7 @@ export const cakes: ProductType[] = [
   {
     id: 15,
     name: "Reforma",
-    description: "Poznati orasasti klasik sa bogatim filom.",
+    description: "Čokolada, Orasi, Puter",
     regularPrice: "",
     salePrice: "",
     onSale: false,
