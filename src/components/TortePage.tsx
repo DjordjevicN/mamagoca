@@ -36,7 +36,7 @@ const TortePage = () => {
             <div className="mt-16">
               <p className="font-bold mb-3">Cena</p>
               <p>
-                Cena torte je 2.500 RSD po kilogramu, s tim da je minimalna
+                Cena torte je 2.700 RSD po kilogramu, s tim da je minimalna
                 težina torte 1 kilogram.
               </p>
             </div>
