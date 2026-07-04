@@ -5,6 +5,7 @@ import BusinessShell from "../components/BusinessShell";
 import { businessRepository } from "../storage/businessRepository";
 import type {
   BusinessData,
+  CashbookEntry,
   ExpenseCategory,
   ExpensePeriod,
   IngredientCategory,
@@ -13,7 +14,6 @@ import type {
 } from "../types/businessTypes";
 import {
   getFixedCostShare,
-  getAverageHourlyLaborCost,
   getInventoryValue,
   getMonthlyOverheadTotal,
   getMonthlyPayroll,
@@ -57,6 +57,8 @@ const ghostButtonClass = "rounded-md border border-slate-700 bg-slate-900 px-3 p
 
 const toNumber = (value: FormDataEntryValue | null) => Number(value || 0);
 const toText = (value: FormDataEntryValue | null) => String(value || "");
+const getWeekdayLabel = (date: string) =>
+  new Intl.DateTimeFormat("sr-RS", { weekday: "long" }).format(new Date(`${date}T00:00:00`));
 
 const SectionTitle = ({ title, detail }: { title: string; detail?: string }) => (
   <div className="mb-4 flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
@@ -84,6 +86,7 @@ const BusinessPage = () => {
   const [editingRecipeId, setEditingRecipeId] = useState<string | null>(null);
   const [editingProductionRunId, setEditingProductionRunId] = useState<string | null>(null);
   const [editingSaleId, setEditingSaleId] = useState<string | null>(null);
+  const [editingCashbookEntryId, setEditingCashbookEntryId] = useState<string | null>(null);
   const [editingWasteEntryId, setEditingWasteEntryId] = useState<string | null>(null);
   const [editingExpenseId, setEditingExpenseId] = useState<string | null>(null);
   const [editingEmployeeId, setEditingEmployeeId] = useState<string | null>(null);
@@ -93,20 +96,33 @@ const BusinessPage = () => {
   const recipeCosts = useMemo(() => getRecipeCosts(data), [data]);
   const monthlyPayroll = useMemo(() => getMonthlyPayroll(data), [data]);
   const monthlyOverhead = useMemo(() => getMonthlyOverheadTotal(data), [data]);
-  const hourlyLaborCost = useMemo(() => getAverageHourlyLaborCost(data), [data]);
+  const monthlyFixedCosts = monthlyOverhead + monthlyPayroll;
   const inventoryValue = useMemo(() => getInventoryValue(data), [data]);
   const monthScope = useMemo(() => getCurrentMonthScope(), []);
   const monthlyReport = useMemo(() => getMonthlyBusinessReport(data, monthScope), [data, monthScope]);
   const monthlyProductSales = useMemo(() => getProductSalesReport(data, monthlyReport.sales), [data, monthlyReport.sales]);
   const todaySales = useMemo(() => data.sales.filter((sale) => sale.date === today()), [data.sales]);
   const totalSalesRevenue = useMemo(() => data.sales.reduce((sum, sale) => sum + sale.totalRevenue, 0), [data.sales]);
+  const todayCashbookEntries = useMemo(
+    () => data.cashbookEntries.filter((entry) => entry.date === today()),
+    [data.cashbookEntries],
+  );
+  const monthlyCashbookEntries = useMemo(
+    () => data.cashbookEntries.filter((entry) => entry.date.startsWith(today().slice(0, 7))),
+    [data.cashbookEntries],
+  );
+  const totalCashbookRevenue = useMemo(
+    () => data.cashbookEntries.reduce((sum, entry) => sum + entry.totalAmount, 0),
+    [data.cashbookEntries],
+  );
   const selectedRecipeCost = recipeCosts.find((item) => item.recipe.id === selectedRecipeId) || recipeCosts[0];
   const lowMarginRecipes = recipeCosts.filter((item) => item.marginPercent < 35);
-  const fixedShare = getFixedCostShare(monthlyOverhead, expectedUnits);
+  const fixedShare = getFixedCostShare(monthlyFixedCosts, expectedUnits);
   const editingStockEntry = data.stockEntries.find((entry) => entry.id === editingStockEntryId);
   const editingRecipe = data.recipes.find((recipe) => recipe.id === editingRecipeId);
   const editingProductionRun = data.productionRuns.find((run) => run.id === editingProductionRunId);
   const editingSale = data.sales.find((sale) => sale.id === editingSaleId);
+  const editingCashbookEntry = data.cashbookEntries.find((entry) => entry.id === editingCashbookEntryId);
   const editingWasteEntry = data.wasteEntries.find((entry) => entry.id === editingWasteEntryId);
   const editingExpense = data.expenses.find((expense) => expense.id === editingExpenseId);
   const editingEmployee = data.employees.find((employee) => employee.id === editingEmployeeId);
@@ -212,7 +228,6 @@ const BusinessPage = () => {
         yieldQuantity: toNumber(formData.get("yieldQuantity")),
         ingredients: recipeRows.filter((row) => row.ingredientId && row.quantity > 0),
         packagingCost: toNumber(formData.get("packagingCost")),
-        laborMinutes: toNumber(formData.get("laborMinutes")),
         salePrice: toNumber(formData.get("salePrice")),
       }),
     );
@@ -284,6 +299,32 @@ const BusinessPage = () => {
   const handleDeleteSale = (saleId: string) => {
     if (!window.confirm("Obrisati unos prodaje?")) return;
     refresh(businessRepository.deleteSaleEntry(saleId));
+  };
+
+  const handleCashbookSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const payload: Omit<CashbookEntry, "id" | "totalAmount"> = {
+      date: toText(formData.get("date")) || today(),
+      cash: toNumber(formData.get("cash")),
+      card: toNumber(formData.get("card")),
+      volt: toNumber(formData.get("volt")),
+      restaurants: toNumber(formData.get("restaurants")),
+      note: toText(formData.get("note")),
+    };
+
+    refresh(
+      editingCashbookEntryId
+        ? businessRepository.updateCashbookEntry({ ...payload, id: editingCashbookEntryId })
+        : businessRepository.addCashbookEntry(payload),
+    );
+    setEditingCashbookEntryId(null);
+    event.currentTarget.reset();
+  };
+
+  const handleDeleteCashbookEntry = (cashbookEntryId: string) => {
+    if (!window.confirm("Obrisati dnevni pazar?")) return;
+    refresh(businessRepository.deleteCashbookEntry(cashbookEntryId));
   };
 
   const handleWasteSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -365,7 +406,7 @@ const BusinessPage = () => {
     const sortedBest = [...recipeCosts].sort((a, b) => b.marginPercent - a.marginPercent).slice(0, 3);
     const sortedWorst = [...recipeCosts].sort((a, b) => a.marginPercent - b.marginPercent).slice(0, 3);
     const averageProfit = recipeCosts.reduce((sum, item) => sum + Math.max(item.profitPerUnit, 0), 0) / (recipeCosts.length || 1);
-    const breakEvenUnits = averageProfit > 0 ? Math.ceil(monthlyReport.overhead / averageProfit) : 0;
+    const breakEvenUnits = averageProfit > 0 ? Math.ceil(monthlyReport.fixedCosts / averageProfit) : 0;
     const monthlyProductionQuantity = getProductionQuantity(monthlyReport.productionRuns);
 
     return (
@@ -670,13 +711,12 @@ const BusinessPage = () => {
 
   const renderRecipes = () => (
     <section>
-      <SectionTitle title="Recepture" detail="Direktan trosak i marza se racunaju iz poslednjih poznatih cena sirovina." />
+      <SectionTitle title="Recepture" detail="Direktan trosak i marza se racunaju iz sirovina i ambalaze. Plate se vode mesecno kroz radnike." />
       <form className="mb-6 rounded-lg border border-slate-800 bg-slate-900 p-4" key={editingRecipeId || "new-recipe"} onSubmit={handleRecipeSubmit}>
-        <div className="grid gap-3 md:grid-cols-5">
+        <div className="grid gap-3 md:grid-cols-4">
           <Field label="Naziv proizvoda"><input className={inputClass} defaultValue={editingRecipe?.name} name="name" required /></Field>
           <Field label="Porcija / komada"><input className={inputClass} defaultValue={editingRecipe?.yieldQuantity} min="1" name="yieldQuantity" required step="1" type="number" /></Field>
           <Field label="Ambalaza po kom"><input className={inputClass} defaultValue={editingRecipe?.packagingCost} min="0" name="packagingCost" step="0.01" type="number" /></Field>
-          <Field label="Vreme rada min"><input className={inputClass} defaultValue={editingRecipe?.laborMinutes} min="0" name="laborMinutes" step="1" type="number" /></Field>
           <Field label="Prodajna cena"><input className={inputClass} defaultValue={editingRecipe?.salePrice} min="0" name="salePrice" required step="0.01" type="number" /></Field>
         </div>
         <div className="mt-4 space-y-2">
@@ -721,12 +761,12 @@ const BusinessPage = () => {
           ) : null}
         </div>
       </form>
-      <Table headers={["Proizvod", "Sastojci", "Rad", "Direktno", "Po kom", "Cena", "Marza", "Akcije"]}>
+      <Table headers={["Proizvod", "Sastojci", "Ambalaza", "Direktno", "Po kom", "Cena", "Marza", "Akcije"]}>
         {recipeCosts.map((item) => (
           <tr className="border-t border-slate-800" key={item.recipe.id}>
             <td className="px-3 py-3 font-medium">{item.recipe.name}</td>
             <td className="px-3 py-3">{money.format(item.ingredientCost)}</td>
-            <td className="px-3 py-3">{money.format(item.laborCost)}</td>
+            <td className="px-3 py-3">{money.format(item.packagingCost)}</td>
             <td className="px-3 py-3">{money.format(item.directCost)}</td>
             <td className="px-3 py-3">{money.format(item.costPerUnit)}</td>
             <td className="px-3 py-3">{money.format(item.recipe.salePrice)}</td>
@@ -872,6 +912,66 @@ const BusinessPage = () => {
     );
   };
 
+  const renderCashbook = () => {
+    const todayCash = todayCashbookEntries.reduce((sum, entry) => sum + entry.cash, 0);
+    const todayCard = todayCashbookEntries.reduce((sum, entry) => sum + entry.card, 0);
+    const todayVolt = todayCashbookEntries.reduce((sum, entry) => sum + entry.volt, 0);
+    const todayRestaurants = todayCashbookEntries.reduce((sum, entry) => sum + entry.restaurants, 0);
+    const todayPazar = todayCashbookEntries.reduce((sum, entry) => sum + entry.totalAmount, 0);
+    const monthlyPazar = monthlyCashbookEntries.reduce((sum, entry) => sum + entry.totalAmount, 0);
+
+    return (
+      <section>
+        <SectionTitle title="Pazar" detail="Dnevni unos ukupnog pazara po kanalu naplate." />
+        <div className="mb-4 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+          <Metric label="Danas ukupno" value={money.format(todayPazar)} />
+          <Metric label="Gotovina danas" value={money.format(todayCash)} />
+          <Metric label="Kartica danas" value={money.format(todayCard)} />
+          <Metric label="Volt danas" value={money.format(todayVolt)} />
+          <Metric label="Restorani danas" value={money.format(todayRestaurants)} />
+          <Metric label="Tekuci mesec" value={money.format(monthlyPazar)} />
+        </div>
+        <form className="mb-6 grid gap-3 rounded-lg border border-slate-800 bg-slate-900 p-4 md:grid-cols-3 xl:grid-cols-7" key={editingCashbookEntryId || "new-cashbook"} onSubmit={handleCashbookSubmit}>
+          <Field label="Datum"><input className={inputClass} defaultValue={editingCashbookEntry?.date || today()} name="date" type="date" /></Field>
+          <Field label="Gotovina"><input className={inputClass} defaultValue={editingCashbookEntry?.cash} min="0" name="cash" required step="0.01" type="number" /></Field>
+          <Field label="Kartica"><input className={inputClass} defaultValue={editingCashbookEntry?.card} min="0" name="card" required step="0.01" type="number" /></Field>
+          <Field label="Volt"><input className={inputClass} defaultValue={editingCashbookEntry?.volt} min="0" name="volt" required step="0.01" type="number" /></Field>
+          <Field label="Restorani"><input className={inputClass} defaultValue={editingCashbookEntry?.restaurants} min="0" name="restaurants" required step="0.01" type="number" /></Field>
+          <Field label="Napomena"><input className={inputClass} defaultValue={editingCashbookEntry?.note} name="note" placeholder="npr. vikend, praznik" /></Field>
+          <div className="flex gap-2 self-end">
+            <button className={buttonClass} type="submit">{editingCashbookEntryId ? "Sacuvaj izmene" : "Upisi pazar"}</button>
+            {editingCashbookEntryId ? <button className={ghostButtonClass} onClick={() => setEditingCashbookEntryId(null)} type="button">Odustani</button> : null}
+          </div>
+        </form>
+        <Table headers={["Datum", "Gotovina", "Kartica", "Volt", "Restorani", "Ukupno", "Napomena", "Akcije"]}>
+          {data.cashbookEntries.map((entry) => (
+            <tr className="border-t border-slate-800" key={entry.id}>
+              <td className="px-3 py-3">
+                <div className="font-medium text-slate-100">{entry.date}</div>
+                <div className="text-xs text-slate-400">{getWeekdayLabel(entry.date)}</div>
+              </td>
+              <td className="px-3 py-3">{money.format(entry.cash)}</td>
+              <td className="px-3 py-3">{money.format(entry.card)}</td>
+              <td className="px-3 py-3">{money.format(entry.volt)}</td>
+              <td className="px-3 py-3">{money.format(entry.restaurants)}</td>
+              <td className="px-3 py-3 font-semibold text-sky-200">{money.format(entry.totalAmount)}</td>
+              <td className="px-3 py-3">{entry.note}</td>
+              <td className="px-3 py-3">
+                <div className="flex gap-2">
+                  <ActionIconButton label="Izmeni" onClick={() => setEditingCashbookEntryId(entry.id)} />
+                  <ActionIconButton label="Obrisi" onClick={() => handleDeleteCashbookEntry(entry.id)} tone="danger" />
+                </div>
+              </td>
+            </tr>
+          ))}
+        </Table>
+        <div className="mt-4 text-sm text-slate-400">
+          Ukupan upisan pazar: <span className="font-semibold text-slate-200">{money.format(totalCashbookRevenue)}</span>
+        </div>
+      </section>
+    );
+  };
+
   const renderExpenses = () => (
     <section>
       <SectionTitle title="Troskovi firme" detail="Fiksni i jednokratni troskovi za okvirnu profitabilnost." />
@@ -910,10 +1010,10 @@ const BusinessPage = () => {
 
   const renderEmployees = () => (
     <section>
-      <SectionTitle title="Radnici" detail="Plate i radni sati ulaze u prosecnu cenu rada po satu za kalkulaciju receptura." />
+      <SectionTitle title="Radnici" detail="Plate se racunaju kao mesecni fiksni trosak, a ne kao vreme pripreme po receptu." />
       <div className="mb-4 grid gap-4 md:grid-cols-3">
         <Metric label="Aktivne plate" value={money.format(monthlyPayroll)} />
-        <Metric label="Cena sata" value={money.format(hourlyLaborCost)} />
+        <Metric label="Fiksni trosak za kalkulator" value={money.format(monthlyFixedCosts)} />
         <Metric
           label="Mesecni sati"
           value={`${numberFormat.format(data.employees.filter((employee) => employee.active).reduce((sum, employee) => sum + employee.monthlyHours, 0))} h`}
@@ -934,27 +1034,23 @@ const BusinessPage = () => {
           {editingEmployeeId ? <button className={ghostButtonClass} onClick={() => setEditingEmployeeId(null)} type="button">Odustani</button> : null}
         </div>
       </form>
-      <Table headers={["Ime", "Pozicija", "Plata", "Sati", "Cena sata", "Status", "Napomena", "Akcije"]}>
-        {data.employees.map((employee) => {
-          const hourlyCost = employee.monthlyHours > 0 ? employee.monthlySalary / employee.monthlyHours : 0;
-          return (
-            <tr className="border-t border-slate-800" key={employee.id}>
-              <td className="px-3 py-3 font-medium">{employee.name}</td>
-              <td className="px-3 py-3">{employee.role}</td>
-              <td className="px-3 py-3">{money.format(employee.monthlySalary)}</td>
-              <td className="px-3 py-3">{numberFormat.format(employee.monthlyHours)} h</td>
-              <td className="px-3 py-3">{money.format(hourlyCost)}</td>
-              <td className="px-3 py-3">{employee.active ? "Aktivan" : "Neaktivan"}</td>
-              <td className="px-3 py-3">{employee.note}</td>
-              <td className="px-3 py-3">
-                <div className="flex gap-2">
-                  <ActionIconButton label="Izmeni" onClick={() => setEditingEmployeeId(employee.id)} />
-                  <ActionIconButton label="Obrisi" onClick={() => handleDeleteEmployee(employee.id)} tone="danger" />
-                </div>
-              </td>
-            </tr>
-          );
-        })}
+      <Table headers={["Ime", "Pozicija", "Plata", "Sati", "Status", "Napomena", "Akcije"]}>
+        {data.employees.map((employee) => (
+          <tr className="border-t border-slate-800" key={employee.id}>
+            <td className="px-3 py-3 font-medium">{employee.name}</td>
+            <td className="px-3 py-3">{employee.role}</td>
+            <td className="px-3 py-3">{money.format(employee.monthlySalary)}</td>
+            <td className="px-3 py-3">{numberFormat.format(employee.monthlyHours)} h</td>
+            <td className="px-3 py-3">{employee.active ? "Aktivan" : "Neaktivan"}</td>
+            <td className="px-3 py-3">{employee.note}</td>
+            <td className="px-3 py-3">
+              <div className="flex gap-2">
+                <ActionIconButton label="Izmeni" onClick={() => setEditingEmployeeId(employee.id)} />
+                <ActionIconButton label="Obrisi" onClick={() => handleDeleteEmployee(employee.id)} tone="danger" />
+              </div>
+            </td>
+          </tr>
+        ))}
       </Table>
     </section>
   );
@@ -1015,7 +1111,7 @@ const BusinessPage = () => {
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             <Metric label="Direktni trosak" value={money.format(selectedRecipeCost.costPerUnit)} />
-            <Metric label="Rad po komadu" value={money.format(selectedRecipeCost.recipe.yieldQuantity > 0 ? selectedRecipeCost.laborCost / selectedRecipeCost.recipe.yieldQuantity : 0)} />
+            <Metric label="Mesecne plate" value={money.format(monthlyPayroll)} />
             <Metric label="Deo fiksnih troskova" value={money.format(fixedShare)} />
             <Metric label="Prodajna cena" value={money.format(selectedRecipeCost.recipe.salePrice)} />
             <Metric label="Profit" value={money.format(profit)} tone={profit < 0 ? "bad" : "good"} />
@@ -1023,10 +1119,8 @@ const BusinessPage = () => {
             <Metric label="Preporucena cena" value={money.format(recommendedPrice)} />
           </div>
         </div>
-        <div className="relative left-1/2 mt-6 w-screen -translate-x-1/2 px-4">
-          <div className="mx-auto max-w-none">
-            <SectionTitle title="Godisnja projekcija" detail="Pregled po mesecima za troskove firme i aktivne plate radnika." />
-          </div>
+        <div className="mt-6 min-w-0">
+          <SectionTitle title="Godisnja projekcija" detail="Pregled po mesecima za troskove firme i aktivne plate radnika." />
           <div className="mb-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <Metric label="Godisnji troskovi" value={money.format(yearlyProjectionTotal)} />
             <Metric label="Projektovan prihod" value={money.format(projectedRevenue)} />
@@ -1034,7 +1128,7 @@ const BusinessPage = () => {
             <Metric label="Projektovan rezultat" value={money.format(projectedProfit)} tone={projectedProfit < 0 ? "bad" : "good"} />
           </div>
           <div className="overflow-hidden rounded-lg border border-slate-800 bg-slate-900 shadow-sm">
-            <div className="overflow-x-auto">
+            <div className="max-w-full overflow-x-auto">
               <table className="w-full min-w-[1280px] text-left text-sm">
                 <thead className="bg-slate-800 text-xs uppercase text-slate-400">
                   <tr>
@@ -1086,9 +1180,10 @@ const BusinessPage = () => {
             "Prvo unesite namirnice u tabu Namirnice.",
             "Zatim u Ulaz robe unesite nabavke da se stanje magacina poveca.",
             "U Recepture napravite proizvode i njihove sastojke.",
-            "U Radnici unesite plate i sate, jer to ulazi u cenu rada.",
+            "U Radnici unesite mesecne plate, jer ulaze u fiksne troskove.",
             "Kada se proizvodi prave, upisite ih u Proizvodnja da se skinu sirovine.",
             "Na kraju dana upisite prodaju u Prodaja.",
+            "Ako hocete finansijski dnevni promet, upisite ga u Pazar po kanalima naplate.",
             "Jednom mesecno uradite Popis i po potrebi cekirajte Uskladi stanje.",
           ]}
         />
@@ -1099,9 +1194,10 @@ const BusinessPage = () => {
             "Namirnice su katalog sirovina sa cenom i trenutnim stanjem.",
             "Popis je stvarno prebrojano stanje magacina i izvestaj manjka/viska.",
             "Ulaz robe je svaka nabavka sirovina po ceni koja je vazila tada.",
-            "Recepture racunaju direktan trosak, rad i marzu proizvoda.",
+            "Recepture racunaju direktan trosak sirovina, ambalaze i marzu proizvoda.",
             "Proizvodnja skida sirovine sa stanja kada se napravi proizvod.",
             "Prodaja cuva koliko je prodato po danu i po kojoj ceni.",
+            "Pazar cuva dnevni novac podeljen na gotovinu, karticu, Volt i restorane.",
             "Otpis cuva sta je baceno iz prodaje i koliko je to kostalo.",
             "Kalkulator sluzi za cenu, profit i godisnju projekciju.",
           ]}
@@ -1118,11 +1214,22 @@ const BusinessPage = () => {
           ]}
         />
         <InstructionBlock
+          title="Kako uneti pazar"
+          items={[
+            "Otvorite tab Pazar i izaberite datum za koji unosite promet.",
+            "Upisite koliko je tog dana naplaceno kroz Gotovinu, Karticu, Volt i Restorane.",
+            "Sistem sam sabira sva 4 iznosa i racuna ukupni dnevni pazar.",
+            "Napomenu koristite za vikend, praznik, vecu porudzbinu ili bilo koju bitnu situaciju.",
+            "Ako je unos pogresan, otvorite red u tabeli i kliknite Izmeni ili Obrisi.",
+          ]}
+        />
+        <InstructionBlock
           title="Kada koristiti edit"
           items={[
             "Ako je pogresena cena ili kolicina u Ulaz robe, kliknite Izmeni.",
             "Ako je pogresen sastojak ili cena proizvoda, izmenite Recepturu.",
             "Ako je pogresno upisana dnevna prodaja, izmenite red u Prodaja.",
+            "Ako je pogresno upisan dnevni promet, izmenite red u Pazar.",
             "Ako se promeni plata ili broj sati, izmenite Radnika.",
             "Brisanje koristite samo kada je unos stvarno visak ili test podatak.",
           ]}
@@ -1150,6 +1257,7 @@ const BusinessPage = () => {
     Recepture: renderRecipes,
     Proizvodnja: renderProduction,
     Prodaja: renderSales,
+    Pazar: renderCashbook,
     Otpis: renderWaste,
     Radnici: renderEmployees,
     Troskovi: renderExpenses,

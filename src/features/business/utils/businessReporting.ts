@@ -49,7 +49,8 @@ export const getMonthlyBusinessReport = (data: BusinessData, scope = getCurrentM
   const overhead = expenses
     .filter((expense) => expense.category !== "plate")
     .reduce((sum, expense) => sum + expense.amount, 0);
-  const profit = revenue - directCost - overhead - wasteCost;
+  const fixedCosts = overhead + payroll;
+  const profit = revenue - directCost - fixedCosts - wasteCost;
   const marginPercent = revenue > 0 ? (profit / revenue) * 100 : 0;
 
   return {
@@ -66,6 +67,7 @@ export const getMonthlyBusinessReport = (data: BusinessData, scope = getCurrentM
     payroll,
     expensesTotal,
     overhead,
+    fixedCosts,
     profit,
     marginPercent,
   };

@@ -1,6 +1,7 @@
 import { businessStorage } from "./businessStorage";
 import type {
   BusinessData,
+  CashbookEntry,
   Employee,
   Expense,
   Ingredient,
@@ -273,6 +274,41 @@ export const businessRepository = {
     return updateData((data) => ({
       ...data,
       sales: data.sales.filter((item) => item.id !== id),
+    }));
+  },
+
+  getCashbookEntries: () => businessStorage.load().cashbookEntries,
+  addCashbookEntry(input: Omit<CashbookEntry, "id" | "totalAmount">) {
+    return updateData((data) => {
+      const cashbookEntry: CashbookEntry = {
+        ...input,
+        id: createId("cashbook"),
+        totalAmount: input.cash + input.card + input.volt + input.restaurants,
+      };
+
+      return {
+        ...data,
+        cashbookEntries: [cashbookEntry, ...data.cashbookEntries],
+      };
+    });
+  },
+  updateCashbookEntry(input: Omit<CashbookEntry, "totalAmount">) {
+    return updateData((data) => {
+      const cashbookEntry: CashbookEntry = {
+        ...input,
+        totalAmount: input.cash + input.card + input.volt + input.restaurants,
+      };
+
+      return {
+        ...data,
+        cashbookEntries: data.cashbookEntries.map((item) => (item.id === input.id ? cashbookEntry : item)),
+      };
+    });
+  },
+  deleteCashbookEntry(id: string) {
+    return updateData((data) => ({
+      ...data,
+      cashbookEntries: data.cashbookEntries.filter((item) => item.id !== id),
     }));
   },
 

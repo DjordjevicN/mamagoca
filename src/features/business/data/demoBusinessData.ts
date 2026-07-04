@@ -104,7 +104,6 @@ export const demoBusinessData: BusinessData = {
         { ingredientId: "ing-malina", quantity: 0.9 },
       ],
       packagingCost: 180,
-      laborMinutes: 120,
       salePrice: 520,
     },
     {
@@ -117,7 +116,6 @@ export const demoBusinessData: BusinessData = {
         { ingredientId: "ing-cokolada", quantity: 0.7 },
       ],
       packagingCost: 18,
-      laborMinutes: 55,
       salePrice: 220,
     },
     {
@@ -130,7 +128,6 @@ export const demoBusinessData: BusinessData = {
         { ingredientId: "ing-malina", quantity: 0.65 },
       ],
       packagingCost: 35,
-      laborMinutes: 70,
       salePrice: 260,
     },
   ],
@@ -161,6 +158,28 @@ export const demoBusinessData: BusinessData = {
       totalRevenue: 3120,
       date: "2026-06-22",
       note: "Porudzbine za rodjendan",
+    },
+  ],
+  cashbookEntries: [
+    {
+      id: "cashbook-1",
+      date: "2026-06-22",
+      cash: 4600,
+      card: 3200,
+      volt: 1800,
+      restaurants: 2400,
+      totalAmount: 12000,
+      note: "Petak",
+    },
+    {
+      id: "cashbook-2",
+      date: "2026-06-23",
+      cash: 3900,
+      card: 4100,
+      volt: 1500,
+      restaurants: 2800,
+      totalAmount: 12300,
+      note: "",
     },
   ],
   wasteEntries: [

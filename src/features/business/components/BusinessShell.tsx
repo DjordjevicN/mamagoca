@@ -15,7 +15,7 @@ const tabGroups = [
   },
   {
     label: "Proizvodnja",
-    tabs: ["Recepture", "Proizvodnja", "Prodaja", "Otpis"],
+    tabs: ["Recepture", "Proizvodnja", "Prodaja", "Pazar", "Otpis"],
   },
   {
     label: "Administracija",

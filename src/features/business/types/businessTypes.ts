@@ -69,7 +69,6 @@ export interface Recipe {
   yieldQuantity: number;
   ingredients: RecipeIngredient[];
   packagingCost: number;
-  laborMinutes: number;
   salePrice: number;
 }
 
@@ -88,6 +87,17 @@ export interface SaleEntry {
   unitPrice: number;
   totalRevenue: number;
   date: string;
+  note: string;
+}
+
+export interface CashbookEntry {
+  id: string;
+  date: string;
+  cash: number;
+  card: number;
+  volt: number;
+  restaurants: number;
+  totalAmount: number;
   note: string;
 }
 
@@ -129,6 +139,7 @@ export interface BusinessData {
   recipes: Recipe[];
   productionRuns: ProductionRun[];
   sales: SaleEntry[];
+  cashbookEntries: CashbookEntry[];
   wasteEntries: WasteEntry[];
   expenses: Expense[];
   employees: Employee[];
@@ -138,7 +149,6 @@ export interface RecipeCost {
   recipe: Recipe;
   ingredientCost: number;
   packagingCost: number;
-  laborCost: number;
   directCost: number;
   costPerUnit: number;
   profitPerUnit: number;
