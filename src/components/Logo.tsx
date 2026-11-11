@@ -1,5 +1,5 @@
 import React from "react";
-import gocaLogo from "../assets/mamagocaLogo.png";
+import gocaLogo from "../assets/mamagocaLogo3.png";
 import DropdownMenu from "./DropdownMenu";
 interface LogoProps {
   noMenu?: boolean;
@@ -11,7 +11,7 @@ const Logo: React.FC<LogoProps> = ({ noMenu }) => {
         onClick={() => (window.location.href = "/")}
         src={gocaLogo}
         alt="logo"
-        className={`${noMenu && "mx-auto"} md:mx-auto w-48 cursor-pointer`}
+        className={`${noMenu && "mx-auto"} md:mx-auto w-[280px] cursor-pointer`}
       />
       {!noMenu && <DropdownMenu />}
     </div>
@@ -20,5 +20,5 @@ const Logo: React.FC<LogoProps> = ({ noMenu }) => {
 
 export default React.memo(
   Logo,
-  (prevProps, nextProps) => prevProps.noMenu === nextProps.noMenu
+  (prevProps, nextProps) => prevProps.noMenu === nextProps.noMenu,
 );

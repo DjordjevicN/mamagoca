@@ -29,7 +29,7 @@ const ContactInformation: React.FC<ContactInformationProps> = ({ noMenu }) => {
           <img src={tiktok} alt="tiktok" />
         </a>
       </div>
-      <a href={`mailto:${shopInformation.email}`} className="text-accent">
+      <a href={`mailto:${shopInformation.email}`} className="text-[#5F2C0A]">
         {shopInformation.email}
       </a>
       <div>

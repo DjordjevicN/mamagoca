@@ -36,7 +36,7 @@ const Hero = () => {
             <a
               target="_blank"
               href="https://wolt.com/sr/srb/belgrade/restaurant/mama-goca-zemun"
-              className="inline-flex items-center bg-accent  w-full py-2 px-4 text-white font-thin transition-all duration-300 rounded-[4px] hover:opacity-80 justify-center"
+              className="inline-flex items-center bg-[#DCC7A3] w-full py-2 px-4 text-white font-thin transition-all duration-300 rounded-[4px] hover:opacity-80 justify-center"
             >
               Wolt
             </a>
